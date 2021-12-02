@@ -1,0 +1,262 @@
+  <section class="content">
+      <div class="container-fluid">
+       
+        <div >
+                
+                <!-- topbuttons start -->
+          <div class="row bar-topname">
+            <div class="col-12">
+                                <div class="page-title-box button-style">
+                                    <h4 class="page-title float-left">User </h4>
+
+                                     <ul class="breadcrumb float-right">
+                                  		<li class="breadcrumb-item active"><button type="button"data-toggle="tooltip" data-placement="bottom"  class="btn btn-sucess" style="background-color: deepskyblue;color: white" id="addnew" title="Add New Spares form" ng-click="add()">Add New </button></li>
+                                         
+                                        
+                                 	</ul>
+                                    
+                                    
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+        
+               </div> <!--topbuttons end -->
+                
+            
+                <!-- spares form start -->
+                
+            <div class="row" >
+                <div class="col-lg-12" ng-show="addTab" >
+                    <div class="card card-outline-info" >
+                            <div class="card-header">
+                                <h4 class="mb-0 text-white">User  Registration</h4>
+                            </div>
+                            <div class="card-body">
+                                <form  >
+                                    <div class="form-body">
+                                        <h3 class="card-title">User  Info</h3>
+                                        <hr>
+                                        <div class="row pt-3">
+                                             
+                                                  <div class="col-md-6">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Branch </label>
+                                                    <select class="form-control mandtry"
+																			ng-model="vm.user.branch.branchId" id="Branch"
+																			ng-options="branch.branchId  as branch.branchName for branch in vm.branchs"
+																			style="height: calc(1.65rem + 14px)" required>
+																			<option value="" disabled selected>Select Branch </option>
+																		</select>
+                                                        <span ng-show="branchError" style="color: red;" aria-hidden="false" class="ng-hide">  *  Branch  is mandatory </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Role </label>
+                                                    <select class="form-control mandtry"
+																			ng-model="vm.user.role.roleId" id="Role"
+																			ng-options="role.roleId  as role.roleName for role in vm.roles"
+																			style="height: calc(1.65rem + 14px)" required>
+																			<option value="" disabled selected>Select Role </option>
+																		</select>
+                                                        <span ng-show="roleError" style="color: red;" aria-hidden="false" class="ng-hide">  *  Role  is mandatory </span>
+                                                </div>
+                                            </div>
+                                          
+                                        </div>
+                                        
+                                        
+                                        <div class="row">
+                                           
+                                           
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">First Name</label>
+                                                     <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="firstName" ng-model="vm.user.firstName"  placeholder="Enter First Name"  aria-invalid="false" style="">
+                                                    <span ng-show="firstNameErr" style="color: red;" aria-hidden="false" class="ng-hide">  * First Name  is mandatory</span>
+                                                </div>
+                                            </div>
+                                            
+                                               <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Last Name</label>
+                                                     <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="lastName" ng-model="vm.user.lastName"  placeholder="Enter Last Name"  aria-invalid="false" style="">
+                                                    <span ng-show="lastNameErr" style="color: red;" aria-hidden="false" class="ng-hide">  * Last Name  is mandatory</span>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                           
+                                        </div>
+                                        <div class="row">
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">User Name</label>
+                                                     <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="userName" ng-model="vm.user.userName"  placeholder="Enter User Name"  aria-invalid="false" style="">
+                                                    <span ng-show="userNameErr" style="color: red;" aria-hidden="false" class="ng-hide">  * User Name is mandatory</span>
+                                                </div>
+                                            </div>
+                                           
+                                             
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Password</label>
+                                                     <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="userName" ng-model="vm.user.password"  placeholder="Enter Password"  aria-invalid="false" style="">
+                                                    <span ng-show="passwordErr" style="color: red;" aria-hidden="false" class="ng-hide">  * Password is mandatory</span>
+                                                </div>
+                                            </div>
+                                            
+                                           
+                                        </div>
+                                       
+                                      
+                                       
+                                    </div>
+                                    
+                                    
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-success" ng-click="save(vm.user)"> <i class="fa fa-check"  ></i> Save</button>
+                                        <button type="button" class="btn btn-success btn-cancel" ng-click="cancel()">Cancel</button>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                        </div>
+                
+                </div>
+                
+            
+            </div>  <!-- spares form end  -->
+                
+          
+          
+            <!--tabel code vew-->
+             
+                
+            <div class="row">
+            <div class="col-12">
+                <div class="card">
+              <div class="card-header">
+               
+                  <h4 class="mb-0 text-white">User  Data Table</h4>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                   <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                        <div class="dt-buttons btn-group flex-wrap" style="padding-bottom: 22px">               
+                            <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light button-style" id="tooltip-touch" title="Export Excel" ng-click="newExcel()" style="margin-top: 0.5%;margin-left: 1%;"><i class="fa fa-file-excel-o" style="font-size:18px;margin:0 2px;"></i>Download Excel</button>
+						    <button id="btnExport" ng-json-export-excel data="vm.allSpares" report-fields="vm.labels" style="display:none" filename="'Spares'" ></button>
+						                    
+<!--                             <button  class="btn btn-secondary" tabindex="0" aria-controls="example1" type="button"><span>Excel</span></button>  -->
+                            
+                        </div>
+                        
+                        </div>
+                    <div class="col-sm-12 col-md-4">
+                      <div id="example1_filter" class="dataTables_filter">
+                           <label for="search">items per page:</label>
+					              <input type="number" min="1" max="100" class="form-control" ng-model="vm.perPage" >
+                      </div>
+                  </div>
+                  
+                  <div class="col-sm-12 col-md-4">
+                      <div id="example1_filter" class="dataTables_filter">
+                          <label class="label_serach">Search: </label>
+                              <input type="search" class="form-control form-control-sm "  ng-model="search" placeholder="" aria-controls="example1" ng-change="searchByPagination(search)">
+                      </div>
+                  </div>
+                       
+                  </div>
+                  
+                  <div class="row">
+                  
+                 <div class="col-sm-12 table-responsive"> 
+                     
+                <table  class="table table-bordered table-striped">
+                   
+                  <thead class="table_thead">
+                  <tr>
+                  	<th>Sr.No</th>
+                 
+                    <th> Name</th>
+                      <th>User Name</th>
+                    <th>Role</th>
+                     <th>Branch</th>
+                  
+                    
+                      <th>Status</th>
+                      <th>Action</th>
+                  </tr>
+                  </thead>
+                    
+                  <tbody>
+                   <tr ng-show="vm.users.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+				   <tr dir-paginate="user in vm.users| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+				   <td class="text-center">{{$index+1}}</td>
+                 
+                   <td>{{user.firstName}} {{user.lastName}}</td>
+                	<td>{{user.userName}}</td>
+                	<td>{{user.role.roleName}}</td>
+                   <td>{{user.branch.branchName}}</td>
+                 
+                 
+                  <td>
+                  <button style="width:100px" ng-class="user.active==1 ? 'btn btn-rounded btn-success':'btn btn-rounded btn-danger'">
+                                            		   <span ng-if="user.active==1"> Active</span><span ng-if="user.active==0"> InActive</span>
+                     </button>
+                 	</td>
+                  <td><i class="fa fa-trash tableicon" data-toggle="tooltip" data-placement="bottom" title="Delete" ng-click="vm.delet(user)"></i>
+                      <i class="fas fa-edit tableicon" data-toggle="tooltip" data-placement="bottom" title="Edit"  ng-click="vm.edit(user)"></i>
+                      <i  class="fas fa-sync"  data-toggle="tooltip" data-placement="bottom" title="Status Change" ng-click="vm.changeStatus(user)"></i>
+
+                  </td>
+                      
+                  </tr>
+                 
+                      
+                 
+                    </tbody>  
+                </table>
+                     
+                      </div>
+                  </div>
+                  
+                  <div class="row">
+                      
+                    <div class="col-sm-12 col-md-5">
+                              <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 entries
+                              
+                              </div>
+                      </div>
+                      
+                      <div class="col-sm-12 col-md-7">
+                          <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                              <ul class="pagination">
+                                  <li class="paginate_button page-item previous disabled" >
+                                      <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                                  </li>
+                                  <li class="paginate_button page-item active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                  <li class="paginate_button page-item "><a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                 <li class="paginate_button page-item next" ><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                              </ul>
+                          </div>
+                      
+                      
+                      </div>
+                    
+                  
+                  </div>
+                  
+              </div>
+              
+            </div>
+                </div>
+                </div>  <!--tabel code vew end -->  
+            
+            </div>   
+
+            
+      
+      </div><!-- /.container-fluid -->
+    </section>

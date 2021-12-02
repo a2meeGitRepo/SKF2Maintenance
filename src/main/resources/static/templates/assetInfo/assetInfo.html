@@ -1,0 +1,388 @@
+ <!-- Main content -->
+    <section class="content ">
+      <div class="container-fluid">
+        <!-- Main row -->
+        <div >
+            
+            
+          <!-- topbuttons -->
+          <div class="row bar-topname">
+            <div class="col-12">
+                                <div class="page-title-box button-style">
+                                    
+                                    
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+        
+               </div>  <!-- topbuttons -->
+                
+                
+                 <!-- machine form start  -->
+            <div class="row" >
+                <div class="col-lg-12" >
+                    <div class="card card-outline-info">
+                            <div class="card-header">
+                                <h4 class="mb-0 text-white">Asset Info</h4>
+                            </div>
+                            <div class="card-body">
+                                <form >
+                                    <div class="form-body">
+                                        
+                                        <hr>
+                                        <div class="row pt-3">
+                                        <div class="col-md-3">
+                                        </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Machine </label>
+                                                    <select class="form-control mandtry" 
+																			ng-model="machine" id="machine" ng-change="selMachine(machine)"
+																			ng-options="machine as machine.machineName for machine in vm.machines"
+																			style="height: calc(1.65rem + 14px)" required>
+																			<option value="" disabled selected>Select Machine </option>
+																		</select>
+                                                        <span ng-show="machine==undefined" style="color: red;" aria-hidden="false" class="ng-hide">  *  Machine  is mandatory </span>
+                                                </div>
+                                            </div>
+                                                 
+                                             
+                                          
+                                        </div>
+                                        <div class="row pt-3" ng-show="machine !=undefined">
+		                                        <div class="col-md-3">
+		                                         <label class="control-label">Machine Name</label>
+		                                          <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="stock_Deatils" ng-model="machine.machineName"  placeholder="Enter Spare Name "  disabled aria-invalid="false" style="">
+		                                        
+		                                        </div>
+		                                             
+                                             <div class="col-md-3">
+		                                         <label class="control-label">Asset Type</label>
+		                                          <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="stock_Deatils" ng-model="machine.assetType"  placeholder="Enter Spare Name "  disabled aria-invalid="false" style="">
+		                                        
+		                                        </div>
+		                                         <div class="col-md-3">
+		                                         <label class="control-label">Application</label>
+		                                          <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="stock_Deatils" ng-model="machine.application"  placeholder="Enter Spare Name "  disabled aria-invalid="false" style="">
+		                                        
+		                                        </div>
+		                                         <div class="col-md-3">
+		                                         <label class="control-label">AssetNumber</label>
+		                                          <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="stock_Deatils" ng-model="machine.assetNumber"  placeholder="Enter Spare Name "  disabled aria-invalid="false" style="">
+		                                        
+		                                        </div>
+                                          
+                                        </div>
+                                         <div class="row pt-3" ng-show="machine !=undefined">
+		                                        <div class="col-md-3">
+		                                         <label class="control-label">Current Cost Center</label>
+		                                          <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="stock_Deatils" ng-model="machine.currentCostCenter"  placeholder="Enter Spare Name "  disabled aria-invalid="false" style="">
+		                                        
+		                                        </div>
+		                                             
+                                             <div class="col-md-3">
+		                                         <label class="control-label">Purchase Date</label>
+		                                          <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="stock_Deatils" ng-model="machine.purchaseDate |date:dd-MM-yyyy"  placeholder="Enter Spare Name "  disabled aria-invalid="false" style="">
+		                                        
+		                                        </div>
+		                                         <div class="col-md-3">
+		                                         <label class="control-label">Status</label>
+		                                          <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="stock_Deatils" ng-model="machine.status"  placeholder="Enter Spare Name "  disabled aria-invalid="false" style="">
+		                                        
+		                                        </div>
+		                                         <div class="col-md-3">
+		                                         <label class="control-label">AddedDate</label>
+		                                          <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="stock_Deatils" ng-model="machine.addedDate|date:dd-MM-yyyy"  placeholder="Enter Spare Name "  disabled aria-invalid="false" style="">
+		                                        
+		                                        </div>
+                                          
+                                        </div>
+                                        
+                                        
+                                   
+                                       
+                                       
+                                       
+                                    </div>
+                                    
+                                 
+                                </form>
+                            </div>
+                        </div>
+                
+                </div>
+                
+            
+            </div>  <!-- machine form end  -->
+        
+                
+              <!-- tabel start -->
+                
+            <div class="row">
+            <div class="col-12">
+                <div class="card">
+             
+              <!-- /.card-header -->
+              <div class="card-body">
+                   <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="dt-buttons btn-group flex-wrap" style="padding-left: 10px">               
+                            
+                                  <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light button-style" id="tooltip-touch" title="Export Excel" ng-click="showMachineSpindle()" style="margin-top: 0.5%;margin-left: 1%;">Spindle</button>
+						                                   
+                        </div>
+                        <div class="dt-buttons btn-group flex-wrap" style="padding-left: 22px">               
+                            
+                                  <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light button-style" id="tooltip-touch" title="Export Excel" ng-click="showMachineSpare()" style="margin-top: 0.5%;margin-left: 1%;">Spare</button>
+						                                   
+                        </div>
+                         <div class="dt-buttons btn-group flex-wrap" style="padding-left: 22px">               
+                            
+                                  <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light button-style" id="tooltip-touch" title="Export Excel" ng-click="showMachineLocation()" style="margin-top: 0.5%;margin-left: 1%;">Location</button>
+						                                   
+                        </div>
+                         
+                           <div class="dt-buttons btn-group flex-wrap" style="padding-left: 22px">               
+                            
+                                  <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light button-style" id="tooltip-touch" title="Export Excel" ng-click="showSetUpChart()" style="margin-top: 0.5%;margin-left: 1%;">Set up chart</button>
+						                                   
+                        </div>
+                                                  <div class="dt-buttons btn-group flex-wrap" style="padding-left: 22px">               
+                            
+                                  <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light button-style" id="tooltip-touch" title="Export Excel" ng-click="showDrawing()" style="margin-top: 0.5%;margin-left: 1%;">Hyd/Pn/Ele Drawings</button>
+						                                   
+                        </div>
+                        
+                        </div>
+                      <!--  <div class="col-sm-12 col-md-2">
+                        <div class="dt-buttons btn-group flex-wrap" style="padding-bottom: 10px">               
+                            
+                                  <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light button-style" id="tooltip-touch" title="Export Excel" ng-click="showMachineSpare()" style="margin-top: 0.5%;margin-left: 1%;">Spare</button>
+						                                   
+                        </div>
+                        
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                        <div class="dt-buttons btn-group flex-wrap" style="padding-bottom: 10px">               
+                            
+                                  <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light button-style" id="tooltip-touch" title="Export Excel" ng-click="showMachineLocation()" style="margin-top: 0.5%;margin-left: 1%;">Location</button>
+						                                   
+                        </div>
+                        
+                        </div>
+                         <div class="col-sm-12 col-md-2">
+                        <div class="dt-buttons btn-group flex-wrap" style="padding-bottom: 10px">               
+                            
+                                  <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light button-style" id="tooltip-touch" title="Export Excel" ng-click="showMachineLocation()" style="margin-top: 0.5%;margin-left: 1%;">Set up chart</button>
+						                                   
+                        </div>
+                        
+                        </div> -->
+                         <div class="col-sm-12 col-md-2">
+                       
+                        
+                        </div>
+                  
+                
+                       
+                  </div>
+                  
+                  <div class="row"  ng-show="machineSpindleTable" style="margin-top: 44px;">
+                  
+                 <div class="col-sm-12 table-responsive "> 
+                     
+                <table class="table table-bordered table-striped">
+                   
+                  <thead class="table_thead">
+                  <tr>
+                  	
+                   	<th>Sr.No</th>
+                    <th>Spindle Name</th>
+                    <th>Spindle Types</th>
+                    <th>Belt Details</th>
+                    <th>Spares Info</th>
+                    
+                  
+                  </tr>
+                  </thead>
+                    
+                  <tbody>
+                  <tr ng-show="vm.mappeddSpindles.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+				   <tr dir-paginate="machineSpindle in vm.mappeddSpindles| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+						   <td class="text-center">{{(vm.perPage*(vm.pageno-1))+($index+1)}}</td>
+						   <td>{{machineSpindle.spindle.spindleName}}</td>
+			                   <td>{{machineSpindle.spindle.spindleType}}</td>
+			                   <td>{{machineSpindle.spindle.spindleDetails}}</td>
+			                   <td>{{machineSpindle.spindle.sparesInfo}}</td>
+						  	
+				</tr>			
+                   
+                    </tbody>  
+                </table>
+                   <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+                     
+                      </div>
+                  </div>
+               
+                    <div class="row"  ng-show="machineLocationTable" style="margin-top: 44px;">
+                  
+                 <div class="col-sm-12 table-responsive "> 
+                     
+                <table class="table table-bordered table-striped">
+                   
+                  <thead class="table_thead">
+                  <tr>
+                  	 <th>Sr.No</th>
+                   <th>Location Code</th>
+                    <th>Location Name</th>
+                    <th>Mapped Date</th>
+                   
+                  </tr>
+                  </thead>
+                    
+                  <tbody>
+                  <tr ng-show="vm.mappeddLocations.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+				   <tr dir-paginate="machineSpindle in vm.mappeddLocations| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+						   <td class="text-center">{{(vm.perPage*(vm.pageno-1))+($index+1)}}</td>
+						   <td>{{machineSpindle.location.locationCode}}</td>
+		                   <td>{{machineSpindle.location.locationName}}</td>
+		                  
+		                   <td>{{machineSpindle.addedDate|date:'dd-MM-yyyy'}}</td>
+		                  
+				</tr>			
+                   
+                    </tbody>  
+                </table>
+                   <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+                     
+                      </div>
+                  </div>
+              <div class="row"  ng-show="machineSpareTable" style="margin-top: 44px;">
+                  
+                 <div class="col-sm-12 table-responsive "> 
+                     
+                <table class="table table-bordered table-striped">
+                   
+                  <thead class="table_thead">
+                  <tr>
+                  	 <th>Sr.No</th>
+                    <th>Spare Name</th>
+                      <th>Details</th>
+                    <th>Stock Code</th>
+                     <th>Location</th>
+                     <th>Cost</th>
+                    
+                  </tr>
+                  </thead>
+                    
+                  <tbody>
+                  <tr ng-show="vm.mappedSpares.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+				   <tr dir-paginate="machineSpindle in vm.mappedSpares| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+						   <td class="text-center">{{$index+1}}</td>
+						    <td>{{machineSpindle.spare.spareName}}</td>
+			                	<td>{{machineSpindle.spare.detials}}</td>
+			                	<td>{{machineSpindle.spare.stockCode}}</td>
+			                   <td>{{machineSpindle.spare.location}}</td>
+			                    <td>{{machineSpindle.spare.cost}}</td>
+									  
+				</tr>			
+                   
+                    </tbody>  
+                </table>
+                   <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+                     
+                      </div>
+                  </div>
+                  
+                   <div class="row"  ng-show="setUpChartTable" style="margin-top: 44px;">
+                  
+                 <div class="col-sm-12 table-responsive "> 
+                     
+                <table class="table table-bordered table-striped" ng-repeat="allD in vm.allData">
+                   
+                  <thead class="table_thead">
+                    <tr style="background-color: #0bcfbd;">  <th col="5">{{allD.table}}</th></tr>
+                  <tr>
+                  	 <th>Value</th>
+                    	<th>Set-up  data Description</th>
+                      <th>Value</th>
+                    <th>Unit</th>
+                     <th>TOL ±</th>
+                    
+                    
+                  </tr>
+                  </thead>
+                    
+                  <tbody>
+                  <tr ng-show="allD.data.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+				   <tr dir-paginate="setupchart in allD.data| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+						 
+						    <td>{{setupchart.srValue}}</td>
+			                	<td>{{setupchart.setupDescription}}</td>
+			                   <td>{{setupchart.value}}</td>
+			                    <td>{{setupchart.unit}}</td>
+			                    <td>{{setupchart.tol}}</td>
+			                		  
+				</tr>			
+                   
+                    </tbody>  
+                </table>
+                   <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+                     
+                      </div>
+                  </div> 
+                      <div class="row"  ng-show="dwaringTable" style="margin-top: 44px;">
+                  
+                 <div class="col-sm-12 table-responsive "> 
+                     
+                <table class="table table-bordered table-striped">
+                   
+                  <thead class="table_thead">
+                  <tr>
+                  	 <th>Sr.No</th>
+                    <th>Drawing Name</th>
+                      <th>File Name</th>
+                      <th>Action</th>
+                  
+                  </tr>
+                  </thead>
+                    
+                  <tbody>
+                  <tr ng-show="vm.mappedDrawings.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+				   <tr dir-paginate="mappedDrawing in vm.mappedDrawings| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+						   <td class="text-center">{{$index+1}}</td>
+						    <td>{{mappedDrawing.drawing.name}}</td>
+			                	<td>{{mappedDrawing.drawing.fileName}}</td>
+			                	<td>   
+			                	
+			                	   <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light button-style" id="tooltip-touch" title="Download" ng-click="download(mappedDrawing.drawing)" style="margin-top: 0.5%;margin-left: 1%;">Download</button>
+			                	
+			                	
+			                	
+			                	</td>
+			                	
+									  
+				</tr>			
+                   
+                    </tbody>  
+                </table>
+                   <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+                     
+                      </div>
+                  </div> 
+                  
+                  
+                  
+                   
+              </div>
+              <!-- /card-body -->
+            </div>
+                </div>
+                </div>   <!-- tabel end  -->
+            
+            </div>     
+    
+            
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>

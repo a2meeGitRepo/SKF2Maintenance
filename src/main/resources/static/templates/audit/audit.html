@@ -1,0 +1,343 @@
+ <!-- Main content -->
+    <section class="content ">
+      <div class="container-fluid">
+        <!-- Main row -->
+        <div >
+            
+            
+          <!-- topbuttons -->
+          <div class="row bar-topname">
+            <div class="col-12">
+                                <div class="page-title-box button-style">
+                                    <h4 class="page-title float-left">Audit</h4>
+
+                                     
+                                    
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+        
+               </div>  <!-- topbuttons -->
+                         <div class="row" >
+                <div class="col-lg-12" ng-show="addTab">
+                    <div class="card card-outline-info">
+                            <div class="card-header">
+                                <h4 class="mb-0 text-white">Detials</h4>
+                            </div>
+                            <div class="card-body">
+                                <form >
+                                    <div class="form-body">
+                                        <hr>
+                                        <div class="row pt-3">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Machine </label>
+                                                    <input type="text" id="Machin_Name"  ng-model="changeManagement.machine.machineName" class="form-control ng-pristine ng-valid ng-empty ng-touched"  disabled placeholder="Enter Machin Name">
+                                                </div>
+                                            </div>
+                                               <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Location</label>
+                                                    <input type="text" id="asset_number"  ng-model="changeManagement.location.locationName" class="form-control ng-pristine ng-valid ng-empty ng-touched" disabled placeholder="Enter Asset Number" ng-change="checkAssetNo(machine.assetNumber)">
+
+                                                	
+                                                </div>
+                                            </div>
+                                            
+                                           
+                                             
+                                          
+                                        </div>
+                                        
+                                        
+                                           <div class="row pt-3">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Activity Type </label>
+                                                    <input type="text" id="Machin_Name"  ng-model="changeManagement.activityType" class="form-control ng-pristine ng-valid ng-empty ng-touched"  disabled placeholder="Enter Machin Name">
+                                                </div>
+                                            </div>
+                                               <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Category</label>
+                                                    <input type="text" id="asset_number"  ng-model="changeManagement.category" class="form-control ng-pristine ng-valid ng-empty ng-touched" disabled placeholder="Enter Asset Number" ng-change="checkAssetNo(machine.assetNumber)">
+
+                                                	
+                                                </div>
+                                            </div>
+                                                                                   
+                                             
+                                          
+                                        </div>
+                                          <div class="row pt-3">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="control-label">Start Date </label>
+                                                    <input type="text" id="Machin_Name"  ng-model="changeManagement.startDate" class="form-control ng-pristine ng-valid ng-empty ng-touched"  disabled placeholder="Enter Machin Name">
+                                                </div>
+                                            </div>
+                                             <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="control-label">Start Time </label>
+                                                    <input type="text" id="Machin_Name"  ng-model="changeManagement.startTime" class="form-control ng-pristine ng-valid ng-empty ng-touched"  disabled placeholder="Enter Machin Name">
+                                                </div>
+                                            </div>
+                                               <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="control-label">End Date</label>
+                                                    <input type="text" id="asset_number"  ng-model="changeManagement.endDate" class="form-control ng-pristine ng-valid ng-empty ng-touched" disabled placeholder="Enter Asset Number" ng-change="checkAssetNo(machine.assetNumber)">
+
+                                                	
+                                                </div>
+                                                </div>
+                                                 <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="control-label">End Time</label>
+                                                    <input type="text" id="Machin_Name"  ng-model="changeManagement.startTime" class="form-control ng-pristine ng-valid ng-empty ng-touched"  disabled placeholder="Enter Machin Name">
+                                                </div>
+                                            </div>
+                                            </div>
+                                                                                   
+                                             
+                                          
+                                        </div>
+                                        
+                                        
+                                           <div class="row pt-3">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Problem Statement</label>
+                                                    <textarea id="Machin_Name"  ng-model="changeManagement.problemStatement" class="form-control ng-pristine ng-valid ng-empty ng-touched"  disabled placeholder="Enter Machin Name"></textarea>
+                                                </div>
+                                            </div>
+                                               <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Activity Description</label>
+                                                    <textarea id="asset_number"  ng-model="changeManagement.activityDescription" class="form-control ng-pristine ng-valid ng-empty ng-touched" disabled placeholder="Enter Asset Number" ng-change="checkAssetNo(machine.assetNumber)"></textarea>
+
+                                                	
+                                                </div>
+                                            </div>
+                                                                                   
+                                             
+                                          
+                                        </div>
+                                                                                
+                                           <div class="row pt-3">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">PIC Department </label>
+                                                    <input type="text" id="Machin_Name"  ng-model="changeManagement.picDepartment.departmentName" class="form-control ng-pristine ng-valid ng-empty ng-touched"  disabled placeholder="Enter Machin Name">
+                                                </div>
+                                            </div>
+                                               <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">PIC</label>
+                                                    <input type="text" id="asset_number"  ng-model="changeManagement.pic" class="form-control ng-pristine ng-valid ng-empty ng-touched" disabled placeholder="Enter Asset Number" ng-change="checkAssetNo(machine.assetNumber)">
+
+                                                	
+                                                </div>
+                                            </div>
+                                                                                   
+                                             
+                                          
+                                        </div>
+                                           <div class="row pt-3">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Added Date</label>
+                                                    <input type="text" id="Machin_Name"  ng-model="changeManagement.addedDate" class="form-control ng-pristine ng-valid ng-empty ng-touched"  disabled placeholder="Enter Machin Name">
+                                                </div>
+                                            </div>
+                                               <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Added By</label>
+                                                    <input type="text" id="asset_number"  ng-model="changeManagement.addedBy" class="form-control ng-pristine ng-valid ng-empty ng-touched" disabled placeholder="Enter Asset Number" ng-change="checkAssetNo(machine.assetNumber)">
+
+                                                	
+                                                </div>
+                                            </div>
+                                                                                   
+                                             
+                                          
+                                        </div>
+                                         <h3 class="card-title">Spare Info</h3>
+                                   <div class="row">
+                                        	<div class="col-md-12">
+                                               		<table class="table table-bordered table-striped">
+                   
+											                  <thead class="table_thead">
+											                  <tr>
+											                  	 <th>Sr.No</th>
+											                  	  <th>Stock Code</th>
+											                    <th>Spare Name</th>
+											                  <th>DetaIls</th>
+											                     
+											                     
+											                  </tr>
+											                  </thead>
+											                    
+											                  <tbody>
+											                  <tr ng-show="vm.spares.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+															   <tr ng-repeat="spare in vm.spares">
+																	   <td class="text-center">{{$index+1}}</td>
+																	    <td>{{spare.spare.stockCode}}</td>
+																	   <td>{{spare.spare.spareName}}</td>
+																	    <td>{{spare.spare.detials}}</td>
+													                  
+																	  
+															</tr>			
+											                   
+											                    </tbody>  
+											                </table>
+                                            </div>
+                                           
+                                        
+                                        
+                                        </div> 
+                                              <h3 class="card-title">Image Info</h3>
+                                   <div class="row">
+                                        	<div class="col-md-6">
+                                               		<table class="table table-bordered table-striped">
+                   
+											                  <thead class="table_thead">
+											                  <tr>
+											                  	 <th>Sr.No</th>
+											                  	  <th>Type</th>
+											                    <th>Name</th>
+											                  <th>Added Date</th>
+											                     
+											                     
+											                  </tr>
+											                  </thead>
+											                    
+											                  <tbody>
+											                  <tr ng-show="vm.images.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+															   <tr ng-repeat="image in vm.images">
+																	   <td class="text-center">{{$index+1}}</td>
+																	    <td>{{image.imageType}}</td>
+																	   <td>{{image.imageName}}</td>
+																	    <td>{{image.addedDate}}</td>
+													                  
+																	  
+															</tr>			
+											                   
+											                    </tbody>  
+											                </table>
+                                            </div>
+                                           
+                                        
+                                        
+                                        </div> 
+                                    </div>
+                                    
+                                    
+                                    <div class="form-actions">
+                                        <button type="button" class="btn btn-success btn-cancel " ng-click="cancel()">Cancel</button>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                        </div>
+                
+                </div>
+                
+            
+            </div>  <!-- machine form end  -->
+        
+                
+       
+              <!-- tabel start -->
+                
+            <div class="row">
+            <div class="col-12">
+                <div class="card">
+              <div class="card-header">
+               
+                  <h4 class="mb-0 text-white">Audit Data Table</h4>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                
+                  
+                  <div class="row">
+                  
+                 <div class="col-sm-12 table-responsive "> 
+                     
+                <table class="table table-bordered table-striped">
+                   
+                  <thead class="table_thead">
+                  <tr>
+                  	 <th>Sr.No</th>
+                    <th>Audit Name</th>
+                     <th>Factory</th>
+                    <th>Channel</th>
+                    <th>amCoordinator </th>
+                         
+                     <th>Action</th>
+                     
+                     
+                  </tr>
+                  </thead>
+                    
+                  <tbody>
+                  <tr ng-show="vm.audits.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+				   <tr dir-paginate="audit in vm.audits| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+						   <td class="text-center">{{$index+1}}</td>
+						    <td>{{audit.auditName}}</td>
+						   <td>{{audit.factory}}</td>
+						    <td>{{audit.channel}}</td>
+		                   <td>{{audit.machine.machineName}}</td>
+		                    <td>{{audit.amCoordinator}}</td>
+		                    <td>
+		                      <i class="fas fa-edit tableicon" data-toggle="tooltip" data-placement="bottom" title="Edit"  ng-click="vm.edit(changeManagement)"></i>
+		                      </td>
+		                    
+						  
+				</tr>			
+                   
+                    </tbody>  
+                </table>
+                   <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+                     
+                      </div>
+                  </div>
+                 <!--  
+                  <div class="row">
+                      
+                    <div class="col-sm-12 col-md-5">
+                              <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 entries
+                              
+                              </div>
+                      </div>
+                      
+                      <div class="col-sm-12 col-md-7">
+                          <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                              <ul class="pagination">
+                                  <li class="paginate_button page-item previous disabled" >
+                                      <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                                  </li>
+                                  <li class="paginate_button page-item active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                  <li class="paginate_button page-item "><a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                 <li class="paginate_button page-item next" ><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                              </ul>
+                          </div>
+                      
+                      
+                      </div>
+                    
+                  
+                  </div> -->
+                  
+              </div>
+              <!-- /card-body -->
+            </div>
+                </div>
+                </div>   <!-- tabel end  -->
+            
+            </div>     
+    
+            
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>

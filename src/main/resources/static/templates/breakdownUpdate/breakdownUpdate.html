@@ -1,0 +1,272 @@
+ <!-- Main content -->
+    <section class="content ">
+      <div class="container-fluid">
+        <!-- Main row -->
+        <div >
+            
+            
+          <!-- topbuttons -->
+          <div class="row bar-topname">
+            <div class="col-12">
+                                <div class="page-title-box button-style">
+                                    <h4 class="page-title float-left">Breakdown Update </h4>
+
+                                     
+                                    
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+        
+               </div>  <!-- topbuttons -->
+                
+                  <div class="row" >
+                <div class="col-lg-12" ng-show="addTab" >
+                    <div class="card card-outline-info" >
+                            <div class="card-header">
+                                <h4 class="mb-0 text-white">Update Maintenance </h4>
+                            </div>
+                            <div class="card-body">
+                                <form  >
+                                    <div class="form-body">
+                                     
+                                        <hr>
+                                        <div class="row ">
+                                        <div class="col-md-3">
+                                        </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Machine</label>
+                                                    <select class="form-control mandtry"
+																			ng-model="updatebreakdown.machine.machineId" id="machine" disabled
+																			ng-options="machineId.machineId as machineId.machineName for machineId in vm.machines"
+																			style="height: calc(1.65rem + 14px)" required>
+																			
+																		</select>
+                                          
+                                                </div>
+                                            </div>
+                                           
+                                           
+                                            
+                                           
+                                            
+                                          
+                                        </div>
+                                      <div class="row ">
+                                        <div class="col-md-3">
+                                        </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Deaprtment </label>
+                                                     <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="checkpoint"  disabled ng-model="updatebreakdown.department.departmentName" placeholder="Enter Check Point"  aria-invalid="false" >
+                                          
+                                                </div>
+                                            </div>
+                                           
+                                           
+                                            
+                                           
+                                            
+                                          
+                                        </div>
+                                     <div class="row ">
+                                        <div class="col-md-3">
+                                        </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Problem</label>
+                                                     <textarea type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="checkpoint"   disabled ng-model="updatebreakdown.problem" placeholder="Enter Overall Observation"  aria-invalid="false" ></textarea>
+                                          
+                                                </div>
+                                            </div>
+                                           
+                                           
+                                            
+                                           
+                                            
+                                          
+                                        </div>
+                                      <div class="row ">
+                                        <div class="col-md-3">
+                                        </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Fault</label>
+                                                     <textarea type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="checkpoint"    ng-model="updatebreakdown.fault" placeholder="Enter Fault"  aria-invalid="false" ></textarea>
+                                          
+                                                </div>
+                                            </div>
+                                           </div>
+                                         <div class="row ">
+                                        <div class="col-md-3">
+                                        </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Cause</label>
+                                                     <textarea type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="checkpoint"    ng-model="updatebreakdown.cause" placeholder="Enter Cause"  aria-invalid="false" ></textarea>
+                                          
+                                                </div>
+                                            </div>
+                                           </div>
+                                        <div class="row ">
+                                        <div class="col-md-3">
+                                        </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Corrective Action Taken</label>
+                                                     <textarea type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="checkpoint"    ng-model="updatebreakdown.carrective_action_taken" placeholder="Enter Carrective Action Taken"  aria-invalid="false" ></textarea>
+                                          
+                                                </div>
+                                            </div>
+                                           </div>
+                                           <div class="row ">
+                                        <div class="col-md-3">
+                                        </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Observation</label>
+                                                     <textarea type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="checkpoint"    ng-model="updatebreakdown.comment_obervation" placeholder="Enter Observation"  aria-invalid="false" ></textarea>
+                                          
+                                                </div>
+                                            </div>
+                                           </div>
+                                      </div>
+                                    
+                                    
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-success" ng-click="update()"> <i class="fa fa-check"  ></i> Save</button>
+                                        <button type="button" class="btn btn-success btn-cancel" ng-click="cancel()">Cancel</button>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                        </div>
+                
+                </div>
+                
+            
+            </div> <!-- MavhinCkeckList form end --> 
+                
+               
+          
+                
+              <!-- tabel start -->
+                
+            <div class="row">
+            <div class="col-12">
+                <div class="card">
+              <div class="card-header">
+               
+                  <h4 class="mb-0 text-white">Breakdown Data Table</h4>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                   <div class="row">
+                  
+                       <div class="col-sm-12 col-md-4">
+                      <div id="example1_filter" class="dataTables_filter">
+                           <label for="search">items per page:</label>
+					              <input type="number" min="1" max="100" class="form-control" ng-model="vm.perPage" >
+                      </div>
+                  </div>
+                  
+                  <div class="col-sm-12 col-md-4">
+                      <div id="example1_filter" class="dataTables_filter">
+                          <label class="label_serach">Search: </label>
+                              <input type="search" class="form-control form-control-sm "  ng-model="search" placeholder="" aria-controls="example1" ng-change="searchByPagination(search)">
+                      </div>
+                  </div>
+                       
+                  </div>
+                  
+                  <div class="row">
+                  
+                 <div class="col-sm-12 table-responsive "> 
+                     
+                <table class="table table-bordered table-striped">
+                   
+                  <thead class="table_thead">
+                  <tr>
+                  	 <th>Sr.No</th>
+                  	  <th>Department</th>
+                    <th>Machine Name</th>
+                     <th>Breakdown Type</th>
+                     <th>Breakdown Section</th>
+                    
+					 <th>Breakdown date</th>
+                    
+                   <th>Problem</th>
+                   <th>Priority</th>
+                         <th>Watch Point</th>
+                      <th>Action</th>
+                     
+                  </tr>
+                  </thead>
+                    
+                  <tbody>
+                  <tr ng-show="vm.breakdowns.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+				   <tr dir-paginate="breakdown in vm.breakdowns| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+						   <td class="text-center">{{$index+1}}    </td>
+						    <td>{{breakdown.department.departmentName}}</td>
+						   <td>{{breakdown.machine.machineName}}</td>
+						    <td>{{breakdown.breakdownType}}</td>
+		                   <td>{{breakdown.breakdownSection}}</td>
+		                  
+		                    
+		                    
+		                   <td>{{maintenance.breakdownDate|date:'dd-MM-yyyy'}}</td>
+		                   <td>{{breakdown.problem}}</td>
+		                   <td>{{breakdown.priority}}</td>
+		                    <td>{{breakdown.watchPoint}}</td>
+		                   <td>
+		                   
+		                   <i  class="fas fa-eye"  data-toggle="tooltip" data-placement="bottom" title="Status Change" ng-click="view(breakdown)"></i>
+		                   </td>
+						  
+				</tr>			
+                   
+                    </tbody>  
+                </table>
+                   <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+                     
+                      </div>
+                  </div>
+                 <!--  
+                  <div class="row">
+                      
+                    <div class="col-sm-12 col-md-5">
+                              <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 entries
+                              
+                              </div>
+                      </div>
+                      
+                      <div class="col-sm-12 col-md-7">
+                          <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                              <ul class="pagination">
+                                  <li class="paginate_button page-item previous disabled" >
+                                      <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                                  </li>
+                                  <li class="paginate_button page-item active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                  <li class="paginate_button page-item "><a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                 <li class="paginate_button page-item next" ><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                              </ul>
+                          </div>
+                      
+                      
+                      </div>
+                    
+                  
+                  </div> -->
+                  
+              </div>
+              <!-- /card-body -->
+            </div>
+                </div>
+                </div>   <!-- tabel end  -->
+            
+            </div>     
+    
+            
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>

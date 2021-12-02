@@ -1,0 +1,445 @@
+ <!-- Main content -->
+    <section class="content ">
+      <div class="container-fluid">
+        <!-- Main row -->
+        <div >
+            
+            
+          <!-- topbuttons -->
+          <div class="row bar-topname">
+            <div class="col-12">
+                                <div class="page-title-box button-style">
+                                    
+
+                                     
+                                    
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+        
+               </div>  <!-- topbuttons -->
+                
+                
+                 <!-- machine form start  -->
+            <div class="row" >
+                <div class="col-lg-12" >
+                    <div class="card card-outline-info">
+                            <div class="card-header">
+                                <h4 class="mb-0 text-white">Maintenance Schedule</h4>
+                            </div>
+                            <div class="card-body">
+                                <form >
+                                    <div class="form-body">
+                                       
+                                        <hr>
+                                        <div class="row pt-3">
+                                            <div class="col-md-6">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Machine</label>
+                                                    <select class="form-control mandtry"
+																			ng-model="maintance.machine.machineId" id="machine"
+																			ng-options="machine.machineId as machine.machineName for machine in vm.machines"
+																			style="height: calc(1.65rem + 14px)" required>
+																			<option value="" disabled selected>Select Machine </option>
+																		</select>
+                                                        <span ng-show="machineError" style="color: red;" aria-hidden="false" class="ng-hide">  *  Machine  is mandatory </span>
+                                          
+                                                </div>
+                                           	</div>
+                                               <div class="col-md-6">
+                                                <div class="form-group">
+                                                  <label for="exampleInputPassword13">Select Frequency
+												 <span style="color:#c00;">*</span> :</label> 
+												<select ng-model="maintance.frequency" style="height: calc(1.65rem + 14px)" 
+														
+														class="form-control" ng-change="vm.changeMode(maintance.frequency)" required>
+														<option value="">Select Frequency</option>
+																					
+																<option value="weekly"> Weekly </option>
+																<option value="monthly"> Monthly </option>
+																<option value="quarterly"> Quarterly </option>
+																<option value="halfyearly"> Half Yearly </option>
+																<option value="yearly"> Yearly </option>
+																				</select>
+																				
+															<span ng-show="frquencyError" style="color: red;" aria-hidden="false" class="ng-hide">  *  Frequency  is mandatory </span>
+																				
+                                                </div>
+                                            </div>
+                                            
+                                           
+                                             
+                                          
+                                        </div>
+                                        
+                                       
+                                    </div>
+                                    
+                                    
+                                 <!--    <div class="form-actions">
+                                        <button type="submit" class="btn btn-success" ng-click="save(machine)"> <i class="fa fa-check"  ></i> Save</button>
+                                        <button type="button" class="btn btn-success btn-cancel " ng-click="cancel()">Cancel</button>
+                                    </div> -->
+                                    
+                                </form>
+                            </div>
+                        </div>
+                
+                </div>
+                
+            
+            </div>  <!-- machine form end  -->
+        
+                
+              <!-- Weekly Maintenance Schedule start -->
+                
+            <div class="row" ng-if="maintance.frequency == 'weekly'">
+            <div class="col-12">
+                <div class="card">
+              <div class="card-header">
+               
+                  <h4 class="mb-0 text-white">Weekly Maintenance </h4>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                  
+                  
+                  <div class="row">
+                  		<div class="col-sm-12 p-t-10" id="weekly" >
+								<div class="table-responsive">          
+								  <table class="table table-bordered">
+									<thead class="table_thead">
+									  <tr>
+										<!-- <th> All </th> -->
+										<th> Months </th>
+										<th> WK1 </th>
+										<th> WK2 </th>
+										<th> WK3 </th>
+										<th> WK4 </th>
+										<th> WK5 </th>
+										<th> WK6 </th>
+									  </tr>
+									</thead>
+									<tbody>
+									  <tr>
+										<td class="bg_orange"> Jan </td>
+										<td ng-repeat="arr in weeklyArray[0].weeks" > <input id="jan{{$index}}" type="date" class="form-control" ng-model="arr.selectedDate" max="{{arr.max}}" min="{{arr.min}}"> </td>
+										
+									  </tr>
+									  <tr>
+										<td class="bg_orange"> Feb </td>
+										<td ng-repeat="arr in weeklyArray[1].weeks" > <input id="feb{{$index}}" type="date" class="form-control"  class="form-control" ng-model="arr.selectedDate" max="{{arr.max}}" min="{{arr.min}}"> </td>
+										
+									  </tr>
+									  <tr>
+									
+										<td class="bg_orange"> Mar </td>
+										<td ng-repeat="arr in weeklyArray[2].weeks" > <input id="mar{{$index}}" type="date" class="form-control" class="form-control" ng-model="arr.selectedDate" max="{{arr.max}}" min="{{arr.min}}"> </td>
+										
+									  </tr>
+									  <tr>
+										<td class="bg_orange"> Apr </td>
+										<td ng-repeat="arr in weeklyArray[3].weeks" > <input id="apr{{$index}}" type="date" class="form-control" class="form-control" ng-model="arr.selectedDate" max="{{arr.max}}" min="{{arr.min}}"> </td>
+										
+									  </tr>
+									  <tr>
+										<td class="bg_orange"> May </td>
+										<td ng-repeat="arr in weeklyArray[4].weeks"> <input id="may{{$index}}" type="date" class="form-control"  class="form-control" ng-model="arr.selectedDate" max="{{arr.max}}" min="{{arr.min}}"> </td>
+										
+									  </tr>
+									  <tr>
+										<td class="bg_orange"> Jun </td>
+										<td ng-repeat="arr in weeklyArray[5].weeks"> <input id="jun{{$index}}" type="date" class="form-control"  class="form-control" ng-model="arr.selectedDate" max="{{arr.max}}" min="{{arr.min}}"> </td>
+										
+									  </tr>
+									  <tr>
+										<td class="bg_orange"> Jul </td>
+										<td ng-repeat="arr in weeklyArray[6].weeks" > <input id="jul{{$index}}" type="date" class="form-control" class="form-control" ng-model="arr.selectedDate" max="{{arr.max}}" min="{{arr.min}}"> </td>
+										
+									  </tr>
+									  <tr>
+										<td class="bg_orange"> Aug </td>
+										<td ng-repeat="arr in weeklyArray[7].weeks" > <input id="aug{{$index}}" type="date" class="form-control" class="form-control" ng-model="arr.selectedDate" max="{{arr.max}}" min="{{arr.min}}"> </td>
+									
+									  </tr>
+									  <tr>
+										<td class="bg_orange"> Sep </td>
+										<td ng-repeat="arr in weeklyArray[8].weeks"> <input id="sep{{$index}}" type="date" class="form-control"  class="form-control" ng-model="arr.selectedDate" max="{{arr.max}}" min="{{arr.min}}"> </td>
+										
+									  </tr>
+									  <tr>
+										<td class="bg_orange"> Oct </td>
+										<td ng-repeat="arr in weeklyArray[9].weeks" > <input id="oct{{$index}}" type="date" class="form-control" class="form-control" ng-model="arr.selectedDate" max="{{arr.max}}" min="{{arr.min}}"> </td>
+										
+									  </tr>
+									  <tr>
+										<td class="bg_orange"> Nov </td>
+										<td ng-repeat="arr in weeklyArray[10].weeks" > <input id="nov{{$index}}" type="date" class="form-control" class="form-control" ng-model="arr.selectedDate" max="{{arr.max}}" min="{{arr.min}}"> </td>
+										
+									  </tr>
+									  <tr>
+										<td class="bg_orange"> Dec </td>
+										<td ng-repeat="arr in weeklyArray[11].weeks"> <input id="dec{{$index}}" type="date" class="form-control"  class="form-control" ng-model="arr.selectedDate" max="{{arr.max}}" min="{{arr.min}}"> </td>
+										
+									  </tr>
+									</tbody>
+								  </table>
+								</div>
+							</div>
+						 
+                  </div>
+                
+                  
+              </div>
+              <!-- /card-body -->
+            </div>
+                </div>
+                </div>   
+    <!-- Weekly Maintenance Schedule end  -->
+     
+        <!-- Monthly Maintenance Schedule start -->
+                
+            <div class="row" ng-if="maintance.frequency == 'monthly'">
+            <div class="col-12">
+                <div class="card">
+              <div class="card-header">
+               
+                  <h4 class="mb-0 text-white">Monthly Maintenance </h4>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                  
+                  
+                  <div class="row">
+                  		<div class="col-sm-12 p-t-10 " id="monthly">
+								<div class="table-responsive">          
+								  <table class="table table-bordered">
+									<thead class="table_thead">
+									  <tr>
+										<th> Jan </th>
+										<th> Feb </th>
+										<th> Mar </th>
+										<th> Apr </th>
+										<th> May </th>
+										<th> Jun </th>
+										<th> July </th>
+										<th> Aug </th>
+										<th> Sept </th>
+										<th> Oct </th>
+										<th> Nov </th>
+										<th> Dec </th>
+									  </tr>
+									</thead>
+									<tbody>
+									  <tr>
+									  	<td ng-repeat="arr in monthlyArray"><input id="arr.month" type="date" ng-model="arr.selectedDate" max="{{arr.max}}" min="{{arr.min}}"> </td>
+										
+									  </tr>
+									</tbody>
+								  </table>
+								</div>
+							</div>
+						 
+                  </div>
+                
+                  
+              </div>
+              <!-- /card-body -->
+            </div>
+                </div>
+                </div>   
+    <!-- Monthly Maintenance Schedule end  -->
+     
+        <!-- Weekly Maintenance Schedule end  -->
+     
+        <!-- Quarterly Maintenance Schedule start -->
+                
+            <div class="row" ng-if="maintance.frequency == 'quarterly'">
+            <div class="col-12">
+                <div class="card">
+              <div class="card-header">
+               
+                  <h4 class="mb-0 text-white">Quarterly Maintenance </h4>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                  
+                  
+                  <div class="row">
+                  					<div class="col-sm-12 p-t-10" id="quarterly" >
+								<div class="table-responsive">          
+								  <table class="table table-bordered">
+									<thead class="table_thead">
+									  <tr>
+										<th> All </th>
+										<th> Quarters </th>
+										<th> 1st Month </th>
+										<th> 2nd Month </th>
+										<th> 3rd Month </th>
+									  </tr>
+									</thead>
+									<tbody>
+									  <tr>
+										<td> JAN - MAR </td>
+										<td> Quarterly 1 </td>
+										<td>  <input id="jan" type="date" ng-model="quarterlyArray[0].selectedDate" max="{{quarterlyArray[0].max}}" min="{{quarterlyArray[0].min}}"> </td>
+										<td>  <input id="feb" type="date"  ng-model="quarterlyArray[1].selectedDate" max="{{quarterlyArray[1].max}}" min="{{quarterlyArray[1].min}}"> </td>
+										<td>  <input id="mar" type="date" ng-model="quarterlyArray[2].selectedDate" max="{{quarterlyArray[2].max}}" min="{{quarterlyArray[2].min}}" > </td>
+									  </tr>
+									  <tr>
+										<td> APR - JUN </td>
+										<td> Quarterly 2 </td>
+										<td> <input id="apr" type="date" ng-model="quarterlyArray[3].selectedDate" max="{{quarterlyArray[3].max}}" min="{{quarterlyArray[3].min}}"> </td>
+										<td> <input id="may" type="date" ng-model="quarterlyArray[4].selectedDate" max="{{quarterlyArray[4].max}}" min="{{quarterlyArray[4].min}}"> </td>
+										<td> <input id="jun" type="date" ng-model="quarterlyArray[5].selectedDate" max="{{quarterlyArray[5].max}}" min="{{quarterlyArray[5].min}}"> </td>
+									  </tr>
+									  <tr>
+										<td> JUL - SEP </td>
+										<td> Quarterly 3 </td>
+										<td> <input id="jul" type="date" ng-model="quarterlyArray[6].selectedDate" max="{{quarterlyArray[6].max}}" min="{{quarterlyArray[6].min}}" > </td>
+										<td> <input id="aug" type="date" ng-model="quarterlyArray[7].selectedDate" max="{{quarterlyArray[7].max}}" min="{{quarterlyArray[7].min}}"> </td>
+										<td> <input id="sep" type="date" ng-model="quarterlyArray[8].selectedDate" max="{{quarterlyArray[8].max}}" min="{{quarterlyArray[8].min}}" > </td>
+									  </tr>
+									  <tr>
+										<td> OCT - DEC </td>
+										<td> Quarterly 4 </td>
+										<td> <input id="oct" type="date" ng-model="quarterlyArray[9].selectedDate" max="{{quarterlyArray[9].max}}" min="{{quarterlyArray[9].min}}" > </td>
+										<td> <input id="nov" type="date" ng-model="quarterlyArray[10].selectedDate" max="{{quarterlyArray[10].max}}" min="{{quarterlyArray[10].min}}"> </td>
+										<td> <input id="dec" type="date" ng-model="quarterlyArray[11].selectedDate" max="{{quarterlyArray[11].max}}" min="{{quarterlyArray[11].min}}" > </td>
+									  </tr>
+									</tbody>
+								  </table>
+								</div>
+							</div>
+						 
+                  </div>
+                
+                  
+              </div>
+              <!-- /card-body -->
+            </div>
+                </div>
+                </div>   
+    <!-- Quarterly Maintenance Schedule end  -->
+     
+      
+    <!-- Half Yearly Maintenance Schedule start -->
+                
+            <div class="row" ng-if="maintance.frequency == 'halfyearly'">
+            <div class="col-12">
+                <div class="card">
+              <div class="card-header">
+               
+                  <h4 class="mb-0 text-white">Half Yearly Maintenance </h4>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                  
+                  
+                  <div class="row">
+                  					<div class="col-sm-12 p-t-10" id="halfyearly" >
+								<div class="table-responsive">          
+								  <table class="table table-bordered">
+									<thead class="table_thead">
+									  <tr>
+										<th> All </th>
+										<th> Half Year </th>
+										<th> 1st Month </th>
+										<th> 2nd Month </th>
+										<th> 3rd Month </th>
+										<th> 4th Month </th>
+										<th> 5th Month </th>
+										<th> 6th Month </th>
+									  </tr>
+									</thead>
+									<tbody>
+									  <tr>
+										<td> JAN - JUN </td>
+										<td> First HALF </td>
+										<td>  <input id="jan" type="date" ng-model="quarterlyArray[0].selectedDate" max="{{quarterlyArray[0].max}}" min="{{quarterlyArray[0].min}}"> </td>
+										<td>  <input id="feb" type="date" ng-model="quarterlyArray[1].selectedDate" max="{{quarterlyArray[1].max}}" min="{{quarterlyArray[1].min}}"> </td>
+										<td>  <input id="mar" type="date" ng-model="quarterlyArray[2].selectedDate" max="{{quarterlyArray[2].max}}" min="{{quarterlyArray[2].min}}"> </td>
+										<td>  <input id="apr" type="date" ng-model="quarterlyArray[3].selectedDate" max="{{quarterlyArray[3].max}}" min="{{quarterlyArray[3].min}}"> </td>
+										<td>  <input id="may" type="date" ng-model="quarterlyArray[4].selectedDate" max="{{quarterlyArray[4].max}}" min="{{quarterlyArray[4].min}}"> </td>
+										<td>  <input id="jun" type="date" ng-model="quarterlyArray[5].selectedDate" max="{{quarterlyArray[5].max}}" min="{{quarterlyArray[5].min}}"> </td>
+									  </tr>
+									  <tr>
+										<td> JUL - DEC </td>
+										<td> Second HALF </td>
+										<td> <input id="jul" type="date" ng-model="quarterlyArray[6].selectedDate" max="{{quarterlyArray[6].max}}" min="{{quarterlyArray[6].min}}" > </td>
+										<td> <input id="aug" type="date" ng-model="quarterlyArray[7].selectedDate" max="{{quarterlyArray[7].max}}" min="{{quarterlyArray[7].min}}"> </td>
+										<td> <input id="sep" type="date" ng-model="quarterlyArray[8].selectedDate" max="{{quarterlyArray[8].max}}" min="{{quarterlyArray[8].min}}" > </td>
+										<td> <input id="oct" type="date" ng-model="quarterlyArray[9].selectedDate" max="{{quarterlyArray[9].max}}" min="{{quarterlyArray[9].min}}"> </td>
+										<td> <input id="nov" type="date" ng-model="quarterlyArray[10].selectedDate" max="{{quarterlyArray[10].max}}" min="{{quarterlyArray[10].min}}" > </td>
+										<td> <input id="dec" type="date" ng-model="quarterlyArray[11].selectedDate" max="{{quarterlyArray[11].max}}" min="{{quarterlyArray[11].min}}"> </td>
+									  </tr>
+									</tbody>
+								  </table>
+								</div>
+							</div>
+						 
+                  </div>
+                
+                  
+              </div>
+              <!-- /card-body -->
+            </div>
+                </div>
+                </div>   
+    <!-- Half Yearly Maintenance Schedule end  --> 
+     
+         <!--  Yearly Maintenance Schedule start -->
+                
+            <div class="row" ng-if="maintance.frequency == 'yearly'">
+            <div class="col-12">
+                <div class="card">
+              <div class="card-header">
+               
+                  <h4 class="mb-0 text-white"> Yearly Maintenance </h4>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                  
+                  
+                  <div class="row">
+                  				<div class="col-sm-12 p-t-10" id="yearly" >
+								<div class="table-responsive">          
+								  <table class="table table-bordered">
+									<thead class="table_thead">
+									  <tr>
+										<th> All </th>
+										<th> Year </th>
+									  </tr>
+									</thead>
+									<tbody>
+									  <tr>
+										<td> JAN - DEC </td>
+										<td>  <input id="jan" type="date" ng-model="yearDate" > </td>
+									  </tr>
+									</tbody>
+								  </table>
+								</div>
+							</div>
+                  </div>
+                
+                  
+              </div>
+              <!-- /card-body -->
+            </div>
+                </div>
+                </div>   
+    <!--  Yearly Maintenance Schedule end  --> 
+     
+     
+     
+     
+            
+            </div>     
+    <div class="form-actions">
+                                        <button type="submit" class="btn btn-success" ng-click="vm.save()"> <i class="fa fa-check"  ></i> Save</button>
+                                        <button type="button" class="btn btn-success btn-cancel " ng-click="cancel()">Cancel</button>
+                                    </div> 
+            
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>

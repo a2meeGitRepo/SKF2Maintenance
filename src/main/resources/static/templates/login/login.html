@@ -1,0 +1,93 @@
+    <style type="text/css">
+.img{
+       width: 90%;
+    height: 432px;
+    margin-top: 55px;
+    margin-left: 95px;
+  }
+        
+.input_login{
+        margin-top: 50px;
+    
+    padding-left: 164px;
+        }
+        
+.single-input {
+    width: 270px;
+    border: 1px solid #c1c1c1;
+    display: flex;
+    margin-bottom: 15px;
+    }
+        
+.single-input input {
+    border: 0px solid #c1c1c1;
+    width: 100%;
+    outline: none;
+    height: 30px;
+    font-size: 18px;
+    background-color:  #dee2e614;
+    padding-top: 8px;
+   }
+        
+.card{
+     margin-top: 3rem;
+     background-color:  #dee2e614;
+        }
+      
+    </style>
+  
+  <div class="container">
+        <div class="card" > 
+            
+      <div class="row">
+        <div class="col-md-6" >
+            <img src="../../dist/img/login.PNG" class="img">
+        
+        
+        </div>
+        
+        <div class="col-md-6 input_login">
+        <form >
+            <img src="../../dist/img/skflogo.png"><br>
+            <h1> Welcome Back :)</h1><br>
+            <h6 style="margin-bottom: 32px">To Keep connected with us Please login with your Personal information by email adress and password</h6>
+            
+            <div class="single-input">
+            <span style="margin: 12px">
+            <i class="fa fa-envelope"></i>
+            </span>
+                <input type="text" ng-model="login.userName" placeholder="username">
+            </div>
+            
+            <div class="single-input">
+                <span style="margin: 12px">
+            <i class="fa fa-lock"></i>
+            </span>
+                <input type="password" ng-model="login.password" placeholder="password">
+             </div>
+            
+             <div class="row">
+                 
+                 <div class="col-md-6">
+               <input type="checkbox"><span style="padding-left: 9px">Remember Me</span>
+                 </div>
+                 
+                 <div class=" col-md-6">
+                 <a href="../../pages/login/Forgetpsw.html">Forget Password</a>
+                 </div>
+            </div>
+           
+            <div class="col-12">
+                
+            <button type="submit" class="btn btn-primary " ng-click="vm.signIn(login)" style="margin-top: 17px">Sign In</button>
+                                        
+            </div>
+            <h1 style="margin-top: 1rem"> Appoint to Mee</h1>
+            
+            </form>
+             </div>
+        </div>
+        
+        
+        </div>
+        </div>

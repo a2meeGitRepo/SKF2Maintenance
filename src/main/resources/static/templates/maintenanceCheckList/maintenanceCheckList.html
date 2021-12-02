@@ -1,0 +1,274 @@
+<section class="content-header">
+      <div class="container-fluid">
+        
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Main row -->
+        <div>
+                <!-- topbuttons start -->
+          <div class="row bar-topname">
+            <div class="col-12">
+                                <div class="page-title-box button-style">
+                                    <h4 class="page-title float-left">Maintenance Check Point </h4>
+
+                                     <ul class="breadcrumb float-right">
+                                  		<li class="breadcrumb-item active"><button type="button" class="btn btn-sucess" data-toggle="tooltip" data-placement="bottom"  style="background-color: deepskyblue;color: white"  id="addnew" title="Add New  MachineChecklist form" ng-click="add()">Add New </button>
+                                         </li>
+                                 	
+                                        
+                                  		
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+        
+               </div> <!-- topbuttons end -->
+                
+                <!-- MavhinCkeckList form start -->
+
+            
+            <div class="row" >
+                <div class="col-lg-12" ng-show="addTab" >
+                    <div class="card card-outline-info" >
+                            <div class="card-header">
+                                <h4 class="mb-0 text-white">Maintenance Check Point Registration</h4>
+                            </div>
+                            <div class="card-body">
+                                <form  >
+                                    <div class="form-body">
+                                     
+                                        <hr>
+                                        <div class="row pt-3">
+                                            <div class="col-md-3">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Machine</label>
+                                                    <select class="form-control mandtry"
+																			ng-model="maintance.machine.machineId" id="machine"
+																			ng-options="machineId.machineId as machineId.machineName for machineId in vm.machines"
+																			style="height: calc(1.65rem + 14px)" required>
+																			<option value="" disabled selected>Select Machine </option>
+																		</select>
+                                                        <span ng-show="machineError" style="color: red;" aria-hidden="false" class="ng-hide">  *  Machine  is mandatory </span>
+                                          
+                                                </div>
+                                            </div>
+                                           
+                                           
+                                            
+                                             <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="control-label">Frequency</label>
+                                                      
+                                                   <select class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" ng-model="maintance.frequency" id="status" placeholder="select Frequency"  aria-invalid="true">
+                                                            <option value="" selected>Select Frequency</option>
+                                                            <option value="Daily">Daily</option>
+                                                           <option value="Weekly">Weekly</option>
+                                                           <option value="Monthly">Monthly</option>
+                                                       
+                                                       
+                                                      </select>
+                                                      
+                                                       <span ng-show="frequencyError" style="color: red;" aria-hidden="false" class="ng-hide">  *  Frequency  is mandatory </span>
+                                                </div>
+                                            </div>
+                                            
+                                              <div class="col-md-3">
+                                                
+                                                  <i class="fa fa-plus-circle" data-toggle="tooltip" data-placement="bottom"  title="Add"  style="padding-top: 35px" ng-click="addCheckList()"></i>    
+                                                 <span ng-show="checkpointErr" style="color: red;" aria-hidden="false" class="ng-hide">  *  Add at least one Check Point   is mandatory </span> 
+                                                
+                                            </div>
+                                          
+                                        </div>
+                                        
+                                        
+                                        <div class="row" ng-show="maintanceCheckList.length!=0" ng-repeat="checkpoint in maintanceCheckList">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="control-label">Check Point </label>
+<!--                                                       <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="checkpoint" ng-model="maintanceCheckList.amcheckvalue.amCheckPoints.checkPointCode" placeholder="Enter Check Point"  aria-invalid="false" > -->
+									      <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="checkPointName" ng-model="checkpoint.checkPointName" placeholder="Enter Check Point Name"  aria-invalid="false" >
+													
+                                                      <span ng-show="checkpoint.checkPointNameERR" style="color: red;" aria-hidden="false" class="ng-hide">  * Check Point is mandatory</span>
+                                                </div>
+                                            </div>
+                                           
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="control-label">Operation </label>
+                                                     <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="Opeartion" ng-model="checkpoint.operation" placeholder="Enter Opeartion"  aria-invalid="false" >
+                                                     <span ng-show="checkpoint.operationERR" style="color: red;" aria-hidden="false" class="ng-hide">  * Opeartion is is mandatory </span>
+                                                </div>
+                                            </div>
+                                            
+                                             <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="control-label">Default Value  </label>
+                                                     <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="deafultvalue" ng-model="checkpoint.defaultValue" placeholder="Enter deafultvalue"  aria-invalid="false" >
+                                                     <span ng-show="checkpoint.defaultValueERR" style="color: red;" aria-hidden="false" class="ng-hide">  * CheckPointCode is is mandatory </span>
+                                                </div>
+                                            </div>
+                                            
+                                             <div class="col-md-3">
+                                                
+                                                    
+                                                     <i class="fas fa-minus-circle"  data-toggle="tooltip" data-placement="bottom"  title="Cancel" style="padding-top: 35px" ng-click="removeNewColumns($index)"></i>   
+                                                   
+                                               
+                                            </div>
+                                            
+                                       </div>
+                                        
+                                      </div>
+                                    
+                                    
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-success" ng-click="save(maintance,maintanceCheckList)"> <i class="fa fa-check"  ></i> Save</button>
+                                        <button type="button" class="btn btn-success btn-cancel" ng-click="cancel()">Cancel</button>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                        </div>
+                
+                </div>
+                
+            
+            </div> <!-- MavhinCkeckList form end --> 
+                
+               
+          
+           
+            
+          
+            
+      
+            <!--tabel code vew-->
+                
+                <div class="row">
+            <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+               
+                  <h4 class="mb-0 text-white">Maintenance CkeckList  Data Table</h4>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                   <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                        <div class="dt-buttons btn-group flex-wrap" style="padding-bottom: 22px">               
+                            
+                                  <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light button-style" id="tooltip-touch" title="Export Excel" ng-click="newExcel()" style="margin-top: 0.5%;margin-left: 1%;"><i class="fa fa-file-excel-o" style="font-size:18px;margin:0 2px;"></i>Download Excel</button>
+						       <button id="btnExport" ng-json-export-excel data="vm.allMaintenances" report-fields="vm.labels" style="display:none" filename="'Maintenances'" ></button>
+						                                   
+                        </div>
+                        
+                        </div>
+                       <div class="col-sm-12 col-md-4">
+                      <div id="example1_filter" class="dataTables_filter">
+                           <label for="search">items per page:</label>
+					              <input type="number" min="1" max="100" class="form-control" ng-model="vm.perPage" >
+                      </div>
+                  </div>
+                  
+                  <div class="col-sm-12 col-md-4">
+                      <div id="example1_filter" class="dataTables_filter">
+                          <label class="label_serach">Search: </label>
+                              <input type="search" class="form-control form-control-sm "  ng-model="search" placeholder="" aria-controls="example1" ng-change="searchByPagination(search)">
+                      </div>
+                  </div>
+                       
+                  </div>
+                  
+                  <div class="row">
+                  
+                 <div class="col-sm-12 table-responsive"> 
+                     
+                <table  class="table table-bordered table-striped">
+                   
+                  <thead class="table_thead">
+                  <tr>
+                 	<th>Sr.No</th>
+                    <th>Machine</th>
+                    <th>Frequency</th>
+                     <th>Check Point</th>
+         
+                   
+                     <th>Operation</th>
+                      <th>Default Value</th>
+                        <th>Status</th>
+                      <th>Action</th>
+                  </tr>
+                  </thead>
+                    
+                  <tbody>    
+                  <tr ng-show="vm.maintenanceCheckPointLists.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+				   <tr dir-paginate="maintanceCheckList in vm.maintenanceCheckPointLists| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+				   <td class="text-center">{{(vm.perPage*(vm.pageno-1))+($index+1)}}</td>
+                   <td>{{maintanceCheckList.machine.machineName}}</td>
+                   <td>{{maintanceCheckList.frequency}}</td>
+                   <td>{{maintanceCheckList.checkPointName}}</td>
+                   <td>{{maintanceCheckList.defaultValue}}</td>
+                   <td>{{maintanceCheckList.operation}}</td>
+                    <td>
+                  <button style="width:100px" ng-class="maintanceCheckList.active==1 ? 'btn btn-rounded btn-success':'btn btn-rounded btn-danger'">
+                                            		   <span ng-if="maintanceCheckList.active==1"> Active</span><span ng-if="maintanceCheckList.active==0"> InActive</span>
+                     </button>
+                 	</td>
+                   <td><i class="fa fa-trash tableicon" data-toggle="tooltip" data-placement="bottom" title="Delete" ng-click="deleteMaintenance(maintanceCheckList)"></i>
+                        <i class="fas fa-edit tableicon" data-toggle="tooltip" data-placement="bottom" title="Edit"  ng-click="editMaintenance(maintanceCheckList)"></i>
+                 	<i  class="fas fa-sync"  data-toggle="tooltip" data-placement="bottom" title="Status Change" ng-click="changeStatus(maintanceCheckList)"></i>
+                 
+                   </td>
+                  </tr>
+                      
+                 
+                    </tbody>  
+                </table>
+                     
+                      </div>
+                  </div>
+                  
+                  <div class="row">
+                      
+                    <div class="col-sm-12 col-md-5">
+                              <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 entries
+                              
+                              </div>
+                      </div>
+                      
+                      <div class="col-sm-12 col-md-7">
+                          <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                              <ul class="pagination">
+                                  <li class="paginate_button page-item previous disabled" >
+                                      <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                                  </li>
+                                  <li class="paginate_button page-item active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                  <li class="paginate_button page-item "><a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                 <li class="paginate_button page-item next" ><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                              </ul>
+                          </div>
+                      
+                      
+                      </div>
+                    
+                  
+                  </div>
+                  
+              </div>
+              
+            </div>
+                </div>
+                </div>
+      <!--tabel code vew-->
+         
+        </div>
+            
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->

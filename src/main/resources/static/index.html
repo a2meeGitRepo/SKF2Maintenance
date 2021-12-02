@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" class="no-js">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Dash Board</title>
+
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+	<link data-require="bootstrap-css@3.1.1" data-semver="3.1.1" rel="stylesheet"
+		href="dist/css/bootstrap-pagination.min.css" />
+
+	<link rel="stylesheet" href="dist/css/bootstrap.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="dist/css/style.css">
+	<link rel="stylesheet" type="text/css" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+	<link rel="stylesheet" type="text/css"  href="bower_components/metismenu/dist/metisMenu.min.css">
+
+
+	<!-- jQuery -->
+	<script src="plugins/jquery/jquery.min.js"></script>
+	<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+	<!-- jQuery UI 1.11.4 -->
+	<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+		<!-- Bootstrap 4 -->
+		<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+		<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-loader/angular-loader.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+	<script src="bower_components/angular-route/angular-route.min.js"></script>
+	<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+	<script src="bower_components/angularUtils-pagination/dirPagination.js"></script>
+	<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+
+	
+	<script src="bower_components/metismenu/dist/metisMenu.min.js"></script>
+	
+
+
+
+	
+		<script src="templates/app.js"></script>
+		<script src="templates/main/main.module.js"></script>
+		<script src="templates/main/main.controller.js"></script>
+		
+		
+		<!-- home Start -->
+		<script src="templates/home/home.module.js"></script>
+		<script src="templates/home/home.controller.js"></script>
+		<!-- home End -->
+		
+		
+		
+		<!-- Login form Start -->
+		<script src="templates/login/login.module.js"></script>
+		<script src="templates/login/login.controller.js"></script>
+		<script src="templates/login/login.factory.js"></script>
+		<script src="templates/login/login.http.js"></script>
+		<!-- Login form End -->
+		
+		
+		<!-- Generic form Start -->
+		<script src="templates/generic/generic.module.js"></script>
+		<script src="templates/generic/generic.factory.js"></script>
+		<script src="templates/generic/generic.http.js"></script>
+		<script src="templates/generic/json-export-excel.js"></script>
+		<script src="templates/generic/FileSaver.js"></script>
+		<!-- Generic form End -->
+		
+		
+		<!-- Machine Start -->
+		<script src="templates/machine/machine.module.js"></script>
+		<script src="templates/machine/machine.controller.js"></script>
+		<!-- Machine End -->
+		
+		<!-- Spare Start -->
+		<script src="templates/spare/spare.module.js"></script>
+		<script src="templates/spare/spare.controller.js"></script>
+		<!-- Spare End -->
+		
+		<!-- Spindle Start -->
+		<script src="templates/spindle/spindle.module.js"></script>
+		<script src="templates/spindle/spindle.controller.js"></script>
+		<!-- Spindle End -->
+		
+		<!-- Location Start -->
+		<script src="templates/location/location.module.js"></script>
+		<script src="templates/location/location.controller.js"></script>
+		<!-- Location End -->
+		
+		<!-- AmCheckPoint Start -->
+			<script src="templates/checkPointAm/checkPointAm.module.js"></script>
+		<script src="templates/checkPointAm/checkPointAm.controller.js"></script>
+		<!-- <script src="templates/amCheckPoint/amCheckPoint.module.js"></script>
+		<script src="templates/amCheckPoint/amCheckPoint.controller.js"></script>
+		 --><!-- AmCheckPoint End -->
+		
+		<!-- MachineOwner Start -->
+		<script src="templates/machineOwner/machineOwner.module.js"></script>
+		<script src="templates/machineOwner/machineOwner.controller.js"></script>
+		<!-- MachineOwner End -->
+		
+		<!-- MaintenanceCheckList Start -->
+		<script src="templates/maintenanceCheckList/maintenanceCheckList.module.js"></script>
+		<script src="templates/maintenanceCheckList/maintenanceCheckList.controller.js"></script>
+		<!-- MaintenanceCheckList End -->
+		
+		
+		<!-- MaintenanceCheckList Start -->
+		<script src="templates/scheduleMaintenance/scheduleMaintenance.module.js"></script>
+		<script src="templates/scheduleMaintenance/scheduleMaintenance.controller.js"></script>
+		<!-- MaintenanceCheckList End -->
+		
+		
+		<!-- MaintenanceCheckList Start -->
+		<script src="templates/machineMapping/machineMapping.module.js"></script>
+		<script src="templates/machineMapping/machineMapping.controller.js"></script>
+		<!-- MaintenanceCheckList End -->
+		
+		
+		
+				<!-- MaintenanceCheckList Start -->
+		<script src="templates/maintenance/maintenance.module.js"></script>
+		<script src="templates/maintenance/maintenance.controller.js"></script>
+		
+			<script src="templates/maintenanceDone/maintenanceDone.module.js"></script>
+		<script src="templates/maintenanceDone/maintenanceDone.controller.js"></script>
+		<!-- MaintenanceCheckList End -->
+		
+		
+		<script src="templates/breakdown/breakdown.module.js"></script>
+		<script src="templates/breakdown/breakdown.controller.js"></script>
+		
+		<script src="templates/breakdownUpdate/breakdownUpdate.module.js"></script>
+		<script src="templates/breakdownUpdate/breakdownUpdate.controller.js"></script>
+		
+		
+		<!-- MaintenanceCheckList Start -->
+		<script src="templates/upload/upload.module.js"></script>
+		<script src="templates/upload/upload.controller.js"></script>
+		
+		<!-- MaintenanceCheckList End -->
+		<script src="templates/report/report.module.js"></script>
+		<script src="templates/report/report.controller.js"></script>
+		
+		
+			<script src="templates/changeManagement/changeManagement.module.js"></script>
+		<script src="templates/changeManagement/changeManagement.controller.js"></script>
+		
+		
+		<script src="templates/assetInfo/assetInfo.module.js"></script>
+		<script src="templates/assetInfo/assetInfo.controller.js"></script>
+		
+		
+		<script src="templates/auditStagesAndItems/auditStagesAndItems.module.js"></script>
+		<script src="templates/auditStagesAndItems/auditStagesAndItems.controller.js"></script>
+		
+			<script src="templates/audit/audit.module.js"></script>
+		<script src="templates/audit/audit.controller.js"></script>
+		
+	<script src="templates/user/user.module.js"></script>
+		<script src="templates/user/user.controller.js"></script>
+		
+
+</head>
+
+
+
+<body class="hold-transition sidebar-mini layout-fixed">
+	<div ui-view="main"></div>
+
+
+
+
+	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
+
+	
+
+	<script>
+		$.widget.bridge('uibutton', $.ui.button)
+	</script>
+	<!-- 
+<script src="dist/js/dropdown.min.js"></script>
+ -->
+</body>
+
+</html>

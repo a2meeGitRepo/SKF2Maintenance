@@ -1,0 +1,194 @@
+ <!-- Main content -->
+    <section class="content ">
+      <div class="container-fluid">
+        <!-- Main row -->
+        <div >
+            
+            
+          <!-- topbuttons -->
+          <div class="row bar-topname">
+            <div class="col-12">
+                                <div class="page-title-box button-style">
+                                    <h4 class="page-title float-left">Maintenance </h4>
+
+                                     <ul class="breadcrumb float-right">
+                                  		<li class="breadcrumb-item active">
+                                            <button type="button" class="btn btn-sucess" data-toggle="tooltip" data-placement="bottom" style="background-color: deepskyblue;color: white"  id="addnew" title="Add New form"  ng-click="add()">Add New </button>
+                                            </li>
+                                         
+                                    </ul>
+                                    
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+        
+               </div>  <!-- topbuttons -->
+                
+                
+                 <!-- machine form start  -->
+            <div class="row" >
+                <div class="col-lg-12" >
+                    <div class="card card-outline-info">
+                            <div class="card-header">
+                              
+                            </div>
+                            <div class="card-body">
+                                <form >
+                                    <div class="form-body">
+                                       
+                                        <hr>
+                                        <div class="row pt-3">
+                                             <div class="col-md-6" >
+                                                <div class="form-group">
+                                                    <label>Maintenance Type</label>
+                                                    <select class="form-control  " ng-model="maintenancceType"  ng-change="vm.getMaintanance(maintenancceType)" 	style="height: calc(1.65rem + 14px)"aria-invalid="true">
+                                                     <option value="" disabled class selected="selected">All</option>
+                                                    <option value="All"    >All</option>
+                                                    <option value="Pending">Pending</option>
+                                                    <option value="Closed">Closed</option>
+                                                    
+                                                  
+                                                    </select>
+                                                    
+                                                </div>
+                                            </div>
+                                               
+                                           
+                                             
+                                          
+                                        </div>
+                                     
+                                       
+                                   
+                                       
+                                       
+                                    </div>
+                                    
+                                    
+                                   
+                                    
+                                </form>
+                            </div>
+                        </div>
+                
+                </div>
+                
+            
+            </div>  <!-- machine form end  -->
+        
+                
+              <!-- tabel start -->
+                
+            <div class="row">
+            <div class="col-12">
+                <div class="card">
+              <div class="card-header">
+               
+                  <h4 class="mb-0 text-white">Maintenance Data Table</h4>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                   <div class="row">
+                  
+                       <div class="col-sm-12 col-md-4">
+                      <div id="example1_filter" class="dataTables_filter">
+                           <label for="search">items per page:</label>
+					              <input type="number" min="1" max="100" class="form-control" ng-model="vm.perPage" >
+                      </div>
+                  </div>
+                  
+                  <div class="col-sm-12 col-md-4">
+                      <div id="example1_filter" class="dataTables_filter">
+                          <label class="label_serach">Search: </label>
+                              <input type="search" class="form-control form-control-sm "  ng-model="search" placeholder="" aria-controls="example1" ng-change="searchByPagination(search)">
+                      </div>
+                  </div>
+                       
+                  </div>
+                  
+                  <div class="row">
+                  
+                 <div class="col-sm-12 table-responsive "> 
+                     
+                <table class="table table-bordered table-striped">
+                   
+                  <thead class="table_thead">
+                  <tr>
+                  	 <th>Sr.No</th>
+                    <th>Machine Name !!</th>
+                     <th>Asset Number</th>
+                     <th>Frequency</th>
+                    <th>Mode</th>
+                      <th>Observation</th>
+                    <th>Done By</th>
+                    <th>Schedule date</th>
+                      <th>Closed date</th>
+                   
+                      <th>Status</th>
+                     
+                  </tr>
+                  </thead>
+                    
+                  <tbody>
+                  <tr ng-show="vm.maintenances.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+				   <tr dir-paginate="maintenance in vm.maintenances| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+						   <td class="text-center">{{$index+1}}</td>
+						   <td>{{maintenance.machine.machineName}}</td>
+						    <td>{{maintenance.machine.assetNumber}}</td>
+		                   <td>{{maintenance.maintenanceMode}}</td>
+		                   <td>{{maintenance.frequency}}</td>
+		                    <td>{{maintenance.overallObservation}}</td>
+		                    <td>{{maintenance.maintenanceDoneBy}}</td>
+		                    
+		                   <td>{{maintenance.sheduleDate|date:'dd-MM-yyyy'}}</td>
+		                    <td>{{maintenance.maintenanceCloseDate|date:'dd-MM-yyyy'}}</td>
+		                  
+		                   <td>{{maintenance.status}}</td>
+						  
+				</tr>			
+                   
+                    </tbody>  
+                </table>
+                   <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+                     
+                      </div>
+                  </div>
+                 <!--  
+                  <div class="row">
+                      
+                    <div class="col-sm-12 col-md-5">
+                              <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 entries
+                              
+                              </div>
+                      </div>
+                      
+                      <div class="col-sm-12 col-md-7">
+                          <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                              <ul class="pagination">
+                                  <li class="paginate_button page-item previous disabled" >
+                                      <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                                  </li>
+                                  <li class="paginate_button page-item active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                  <li class="paginate_button page-item "><a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                 <li class="paginate_button page-item next" ><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                              </ul>
+                          </div>
+                      
+                      
+                      </div>
+                    
+                  
+                  </div> -->
+                  
+              </div>
+              <!-- /card-body -->
+            </div>
+                </div>
+                </div>   <!-- tabel end  -->
+            
+            </div>     
+    
+            
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>

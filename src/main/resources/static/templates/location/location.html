@@ -1,0 +1,200 @@
+ <section class="content">
+      <div class="container-fluid">
+        <!-- Main row -->
+        <div >
+                
+                <!-- topbuttons start -->
+          <div class="row bar-topname">
+            <div class="col-12">
+                                <div class="page-title-box button-style">
+                                    <h4 class="page-title float-left">Location </h4>
+
+                                     <ul class="breadcrumb float-right">
+                                  		<li class="breadcrumb-item active"><button type="button" class="btn btn-sucess" data-toggle="tooltip" data-placement="bottom" style="background-color: deepskyblue;color: white"  id="addnew" title="Add New  Location form" ng-click="add()">Add New </button>
+                                         </li>
+                                         
+                                          
+                                  		
+                                    </ul>
+                                    
+                                    <div class="clearfix"></div>
+                                </div>
+            </div>
+        
+            </div>  <!-- topbuttons end -->
+            
+                
+                <!-- loaction form start -->
+            <div class="row" >
+                <div class="col-lg-12" ng-show="addTab" >
+                    <div class="card card-outline-info" >
+                            <div class="card-header">
+                                <h4 class="mb-0 text-white">Location Registration</h4>
+                            </div>
+                            <div class="card-body">
+                                <form  >
+                                    <div class="form-body">
+                                        <h3 class="card-title">Location Info</h3>
+                                        <hr>
+                                        <div class="row pt-3">
+                                            <div class="col-md-6">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Location Name </label>
+                                                    
+                                                     <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="location_name" ng-model="location.locationName" placeholder="Enter Location Name"  aria-invalid="false" >
+                                                     <span ng-show="locationNameError" style="color: red;" aria-hidden="false" class="ng-hide">  * LoactionName  is mandatory</span>
+                                                </div>
+                                            </div>
+                                           
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Location Code</label>
+                                                      
+                                                     <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="location_code" ng-model="location.locationCode"  placeholder="Enter LocationCode"  aria-invalid="false" >
+                                                    <span ng-show="locationCodeError" style="color: red;" aria-hidden="false" class="ng-hide">  * LoactionCode  is mandatory</span>
+                                                </div>
+                                            </div>
+                                          
+                                        </div>
+                                        
+                                      
+                                       
+                                       
+                                       
+                                    </div>
+                                    
+                                    
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-success" ng-click="save(location)"> <i class="fa fa-check"  ></i> Save</button>
+                                        <button type="button" class="btn btn-success btn-cancel" ng-click="cancel()">Cancel</button>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                        </div>
+                
+                </div>
+                
+            
+            </div>  <!-- loaction form end --> 
+                
+               
+          
+           
+            
+        
+      
+            <!--tabel code vew-->
+                <div class="row">
+            <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+               
+                  <h4 class="mb-0 text-white">Location Data Table</h4>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                   <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                        <div class="dt-buttons btn-group flex-wrap" style="padding-bottom: 22px">               
+                            <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light button-style" id="tooltip-touch" title="Export Excel" ng-click="newExcel()" style="margin-top: 0.5%;margin-left: 1%;"><i class="fa fa-file-excel-o" style="font-size:18px;margin:0 2px;"></i>Download Excel</button>
+						    <button id="btnExport" ng-json-export-excel data="vm.allLocation" report-fields="vm.labels" style="display:none" filename="'Locations'" ></button>
+                        </div>
+                        
+                        </div>
+                        
+                        <div class="col-sm-12 col-md-4">
+                      <div id="example1_filter" class="dataTables_filter">
+                           <label for="search">items per page:</label>
+					              <input type="number" min="1" max="100" class="form-control" ng-model="vm.perPage" >
+                      </div>
+                  </div>
+                 
+                  <div class="col-sm-12 col-md-4">
+                      <div id="example1_filter" class="dataTables_filter">
+                          <label class="label_serach">Search: </label>
+                              <input type="search" class="form-control form-control-sm "  ng-model="search" placeholder="" aria-controls="example1" ng-change="searchByPagination(search)">
+                      </div>
+                  </div>
+                       
+                  </div>
+                  
+                  <div class="row">
+                  
+                 <div class="col-sm-12 table-responsive"> 
+                     
+                <table  class="table table-bordered table-striped">
+                   
+                  <thead class="table_thead">
+                  <tr>
+                  	<th>Sr.No</th>
+                    <th>Location Name</th>
+                    <th>location Code</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                    
+                  <tbody>
+                  <tr ng-show="vm.location.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+				   <tr dir-paginate="location in vm.locations| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+				   <td class="text-center">{{(vm.perPage*(vm.pageno-1))+($index+1)}}</td>
+                    <td>{{location.locationName}}</td>
+                   <td>{{location.locationCode}}</td>
+                    <td>
+                  <button style="width:100px" ng-class="location.active==1 ? 'btn btn-rounded btn-success':'btn btn-rounded btn-danger'">
+                                            		   <span ng-if="location.active==1"> Active</span><span ng-if="location.active==0"> InActive</span>
+                     </button>
+                 	</td>
+                <td><i class="fa fa-trash tableicon" data-toggle="tooltip" data-placement="bottom" title="Delete" ng-click="deleteLocation(location)"></i>
+                      <i class="fas fa-edit tableicon" data-toggle="tooltip" data-placement="bottom" title="Edit"  ng-click="editLocation(location)"></i>
+                      <i  class="fas fa-sync"  data-toggle="tooltip" data-placement="bottom" title="Status Change" ng-click="changeStatus(location)"></i>
+
+
+                  </td>
+                  </tr>
+                      
+                 
+                    </tbody>  
+                </table>
+                     
+                      </div>
+                  </div>
+                  
+                  <div class="row">
+                      
+                    <div class="col-sm-12 col-md-5">
+                              <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 entries
+                              
+                              </div>
+                      </div>
+                      
+                      <div class="col-sm-12 col-md-7">
+                          <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                              <ul class="pagination">
+                                  <li class="paginate_button page-item previous disabled" >
+                                      <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                                  </li>
+                                  <li class="paginate_button page-item active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                  <li class="paginate_button page-item "><a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                 <li class="paginate_button page-item next" ><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                              </ul>
+                          </div>
+                      
+                      
+                      </div>
+                    
+                  
+                  </div>
+                  
+              </div>
+              
+            </div>
+                </div>
+                </div>  <!--tabel code vew-->
+         
+     
+        </div>
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>

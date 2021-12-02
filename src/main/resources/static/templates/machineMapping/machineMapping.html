@@ -1,0 +1,626 @@
+ <!-- Main content -->
+    <section class="content ">
+      <div class="container-fluid">
+        <!-- Main row -->
+        <div >
+            
+            
+          <!-- topbuttons -->
+          <div class="row bar-topname">
+            <div class="col-12">
+                                <div class="page-title-box button-style">
+                                    <h4 class="page-title float-left">Machine  Mapping </h4>
+
+                                     <ul class="breadcrumb float-right">
+                                  		<li class="breadcrumb-item active">
+                                            <button type="button" class="btn btn-sucess" data-toggle="tooltip" data-placement="bottom" style="background-color: deepskyblue;color: white"  id="addnew" title="Add New form"  ng-click="add()"> New  Mapping</button>
+                                            </li>
+                                         
+                                    </ul>
+                                    
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+        
+               </div>  <!-- topbuttons -->
+                
+                
+                 <!-- machine form start  -->
+            <div class="row" >
+                <div class="col-lg-12" ng-show="addTab">
+                    <div class="card card-outline-info">
+                            <div class="card-header">
+                                <h4 class="mb-0 text-white">New Machine Mapping</h4>
+                            </div>
+                            <div class="card-body">
+                                <form >
+                                    <div class="form-body">
+                                        
+                                        <hr>
+                                        <div class="row pt-3">
+                                             <div class="col-md-6">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Channel </label>
+                                                    <select class="form-control mandtry" 
+																			ng-model="chennel" id="chennel" ng-change="vm.getMachineByChannel(chennel)"
+																			ng-options="channel as channel for channel in vm.channels"
+																			style="height: calc(1.65rem + 14px)" required>
+																			<option value="" disabled selected>Select Channel </option>
+																		</select>
+                                                </div>
+                                            </div>
+                                                 <div class="col-md-6">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Machine </label>
+                                                    <select class="form-control mandtry" 
+																			ng-model="machineMapping.machine.machineId" id="machine" ng-change="selMachine(machineMapping.machine.machineId)"
+																			ng-options="machine.machineId as machine.machineName for machine in vm.machines"
+																			style="height: calc(1.65rem + 14px)" required>
+																			<option value="" disabled selected>Select Machine </option>
+																		</select>
+                                                        <span ng-show="machineError" style="color: red;" aria-hidden="false" class="ng-hide">  *  Machine  is mandatory </span>
+                                                </div>
+                                            </div>
+                                                  <div class="col-md-6" ng-show="showMappingType">
+                                                <div class="form-group">
+                                                    <label>Mapping Type</label>
+                                                    <select class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" ng-model="machineMapping.mappingType" id="spareType" ng-change="getMappingTypes(machineMapping.mappingType)" 	style="height: calc(1.65rem + 14px)"aria-invalid="true">
+                                                    <option value="" disabled class selected="selected">Select Mapping Type</option>
+                                                    <option value="Spindle">Spindle</option>
+                                                    <option value="Spare">Spare</option>
+                                                     <option value="Location">Location</option>
+                                                      <option value="Drawing">Drawing</option>
+                                                  
+                                                    </select>
+                                                   <span ng-show="mappingTypeErr" style="color: red;" aria-hidden="false" class="ng-hide">  *  Spare Type  is mandatory </span>
+                                                    
+                                                </div>
+                                            </div>
+                                            
+                                           
+                                             
+                                          
+                                        </div>
+                                        
+                                        
+                                        <div class="row ">
+                                        	 <div class="col-md-6" ng-if="machineMapping.mappingType=='Drawing'">
+                                             <label>Available  </label>
+                                        		<table class="table table-bordered table-striped">
+                   
+											                  <thead class="table_thead">
+											                  <tr>
+											                  	 <th>Sr.No</th>
+											                   
+											                    <th>Drawing Name</th>
+											                    
+											                      <th>Action</th>
+											                  </tr>
+											                  </thead>
+											                    
+											                  <tbody>
+											                  <tr ng-show="vm.drawings.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+															   <tr dir-paginate="drawing in vm.drawings| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+																	   <td class="text-center">{{$index+1}}</td>
+																	   <td>{{drawing.name}}</td>
+													                   
+													                   
+																	   <td>
+																		 	 <input type="checkbox" class="c_check" ng-model="drawing.checked"  ng-click="checkDrawing(drawing)"
+														ng-checked="drawing.checked" >														
+														               </td>	
+															</tr>			
+											                   
+											                    </tbody>  
+											                </table>
+                                        
+                                        
+                                        
+                                        
+                                        </div>
+                                        <div class="col-md-6" ng-if="machineMapping.mappingType=='Drawing'">
+                                             <label>Mapped  </label> : <span ng-show="mappedDrawingErr" style="color: red;">At Least One Spare Select</span> 
+                                        		<table class="table table-bordered table-striped">
+                   
+											                  <thead class="table_thead">
+											                  <tr>
+											                  	 <th>Sr.No</th>
+											                  
+											                    <th>Drawing Name</th>
+											                    
+											                     
+											                  </tr>
+											                  </thead>
+											                    
+											                  <tbody>
+											                  <tr ng-show="vm.mappedDrawings.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+															   <tr dir-paginate="mappedDrawing in vm.mappedDrawings| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+																	   <td class="text-center">{{$index+1}}</td>
+													                   <td>{{mappedDrawing.drawing.name}}</td>
+													                   
+													                 
+															</tr>			
+											                   
+											                    </tbody>  
+											                </table>
+                                        
+                                        
+                                        
+                                        
+                                        </div>   
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        <div class="col-md-6" ng-if="machineMapping.mappingType=='Location'">
+                                            <label>Available </label> : 
+                                        		<table class="table table-bordered table-striped">
+                   
+											                  <thead class="table_thead">
+											                  <tr>
+											                  	 <th>Sr.No</th>
+											                    <th>Location Code</th>
+											                    <th>Location Name</th>
+											                   
+											                      <th>Action</th>
+											                  </tr>
+											                  </thead>
+											                    
+											                  <tbody>
+											                  <tr ng-show="vm.locations.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+															   <tr dir-paginate="location in vm.locations| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+																	   <td class="text-center">{{$index+1}}</td>
+																	   <td>{{location.locationCode}}</td>
+													                   <td>{{location.locationName}}</td>
+													                  
+																	   <td>
+																		 	 <input type="checkbox" class="c_check" ng-model="location.checked"  ng-click="checkLocation(location)"
+														ng-checked="location.checked" >														
+														               </td>	
+															</tr>			
+											                   
+											                    </tbody>  
+											                </table>
+                                        
+                                        
+                                        
+                                        
+                                        </div>  
+                                         <div class="col-md-6" ng-if="machineMapping.mappingType=='Location'">
+                                            <label>Mapped  </label> : <span ng-show="mappedLocationErr" style="color: red;">At Least One Location Select</span> 
+                                        		<table class="table table-bordered table-striped">
+                   
+											                  <thead class="table_thead">
+											                  <tr>
+											                  	 <th>Sr.No</th>
+											                    <th>Location Code</th>
+											                    <th>Location Name</th>
+											                   
+											                     
+											                  </tr>
+											                  </thead>
+											                    
+											                  <tbody>
+											                  <tr ng-show="vm.mappeddLocations.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+															   <tr dir-paginate="mappedLocation in vm.mappeddLocations| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+																	   <td class="text-center">{{$index+1}}</td>
+																	   <td>{{mappedLocation.location.locationCode}}</td>
+													                   <td>{{mappedLocation.location.locationName}}</td>
+													                  
+																	   	
+															</tr>			
+											                   
+											                    </tbody>  
+											                </table>
+                                        
+                                        
+                                        
+                                        
+                                        </div> 
+                                        <div class="col-md-6" ng-if="machineMapping.mappingType=='Spare'">
+                                             <label>Available  </label>
+                                        		<table class="table table-bordered table-striped">
+                   
+											                  <thead class="table_thead">
+											                  <tr>
+											                  	 <th>Sr.No</th>
+											                    <th>Spare Type</th>
+											                    <th>Spare Name</th>
+											                    
+											                      <th>Action</th>
+											                  </tr>
+											                  </thead>
+											                    
+											                  <tbody>
+											                  <tr ng-show="vm.spares.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+															   <tr dir-paginate="spare in vm.spares| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+																	   <td class="text-center">{{$index+1}}</td>
+																	   <td>{{spare.spareType}}</td>
+													                   <td>{{spare.spareName}}</td>
+													                   
+													                   
+																	   <td>
+																		 	 <input type="checkbox" class="c_check" ng-model="spare.checked"  ng-click="checkSpare(spare)"
+														ng-checked="spare.checked" >														
+														               </td>	
+															</tr>			
+											                   
+											                    </tbody>  
+											                </table>
+                                        
+                                        
+                                        
+                                        
+                                        </div>
+                                        <div class="col-md-6" ng-if="machineMapping.mappingType=='Spare'">
+                                             <label>Mapped  </label> : <span ng-show="mappedSpareErr" style="color: red;">At Least One Spare Select</span> 
+                                        		<table class="table table-bordered table-striped">
+                   
+											                  <thead class="table_thead">
+											                  <tr>
+											                  	 <th>Sr.No</th>
+											                    <th>Spare Type</th>
+											                    <th>Spare Name</th>
+											                    
+											                     
+											                  </tr>
+											                  </thead>
+											                    
+											                  <tbody>
+											                  <tr ng-show="vm.mappedSpares.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+															   <tr dir-paginate="mappedSpare in vm.mappedSpares| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+																	   <td class="text-center">{{$index+1}}</td>
+																	   <td>{{mappedSpare.spare.spareType}}</td>
+													                   <td>{{mappedSpare.spare.spareName}}</td>
+													                   
+													                 
+															</tr>			
+											                   
+											                    </tbody>  
+											                </table>
+                                        
+                                        
+                                        
+                                        
+                                        </div>   
+                                              <div class="col-md-6" ng-if="machineMapping.mappingType=='Spindle'">
+                                         <label>Available </label> : 
+                                        		<table class="table table-bordered table-striped">
+                   
+											                  <thead class="table_thead">
+											                  <tr>
+											                  	 <th>Sr.No</th>
+											                    <th>Spindle Type</th>
+											                    <th>Spindle Name</th>
+											                    
+											                      <th>Action</th>
+											                  </tr>
+											                  </thead>
+											                    
+											                  <tbody>
+											                  <tr ng-show="vm.spindles.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+															   <tr dir-paginate="spindle in vm.spindles| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+																	   <td class="text-center">{{$index+1}}</td>
+																	   <td>{{spindle.spindleType}}</td>
+													                   <td>{{spindle.spindleName}}</td>
+													                   
+													                   
+																	    <td>
+																		 	 <input type="checkbox" class="c_check" ng-model="spindle.checked"  ng-click="checkSpindle(spindle)"
+														ng-checked="spindle.checked" >														
+														               </td>	
+															</tr>			
+											                   
+											                    </tbody>  
+											                </table>
+                                        
+                                        
+                                        
+                                        
+                                        </div> 
+                                              <div class="col-md-6" ng-if="machineMapping.mappingType=='Spindle'">
+                                         <label>Mapped </label> : <span ng-if="mappedSpindleErr"  style="color: red;">At Least One Spare Select</span>
+                                        		<table class="table table-bordered table-striped">
+                   
+											                  <thead class="table_thead">
+											                  <tr>
+											                  	 <th>Sr.No</th>
+											                    <th>Spindle Type</th>
+											                    <th>Spindle Name</th>
+											                    
+											                      
+											                  </tr>
+											                  </thead>
+											                    
+											                  <tbody>
+											                  <tr ng-show="vm.mappeddSpindles.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+															   <tr dir-paginate="mappeddSpindle in vm.mappeddSpindles| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+																	   <td class="text-center">{{$index+1}}</td>
+																	   <td>{{mappeddSpindle.spindle.spindleType}}</td>
+													                   <td>{{mappeddSpindle.spindle.spindleName}}</td>
+													                   
+													                   
+																	  
+															</tr>			
+											                   
+											                    </tbody>  
+											                </table>
+                                        
+                                        
+                                        
+                                        
+                                        </div> 
+                                            
+                                           
+                                        </div>
+                                       
+                                       
+                                       
+                                    </div>
+                                    
+                                    
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-success" ng-click="save()"> <i class="fa fa-check"  ></i> Save</button>
+                                        <button type="button" class="btn btn-success btn-cancel " ng-click="cancel()">Cancel</button>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                        </div>
+                
+                </div>
+                
+            
+            </div>  <!-- machine form end  -->
+        
+                
+              <!-- tabel start -->
+                
+            <div class="row">
+            <div class="col-12">
+                <div class="card">
+              <div class="card-header">
+               
+                  <h4 class="mb-0 text-white">Machine Data Table</h4>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                   <div class="row">
+                    <div class="col-sm-12 col-md-2">
+                        <div class="dt-buttons btn-group flex-wrap" style="padding-bottom: 22px">               
+                            
+                                  <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light button-style" id="tooltip-touch" title="Export Excel" ng-click="showMachineSpindle()" style="margin-top: 0.5%;margin-left: 1%;">Machine Spindle</button>
+						                                   
+                        </div>
+                        
+                        </div>
+                       <div class="col-sm-12 col-md-2">
+                        <div class="dt-buttons btn-group flex-wrap" style="padding-bottom: 22px">               
+                            
+                                  <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light button-style" id="tooltip-touch" title="Export Excel" ng-click="showMachineSpare()" style="margin-top: 0.5%;margin-left: 1%;">Machine Spare</button>
+						                                   
+                        </div>
+                        
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                        <div class="dt-buttons btn-group flex-wrap" style="padding-bottom: 22px">               
+                            
+                                  <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light button-style" id="tooltip-touch" title="Export Excel" ng-click="showMachineLocation()" style="margin-top: 0.5%;margin-left: 1%;">Machine Location</button>
+						                                   
+                        </div>
+                        
+                        </div>
+                   <div class="col-sm-12 col-md-2">
+                        <div class="dt-buttons btn-group flex-wrap" style="padding-bottom: 22px">               
+                            
+                                  <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light button-style" id="tooltip-touch" title="Export Excel" ng-click="showMachineDrawing()" style="margin-top: 0.5%;margin-left: 1%;">Machine Drawing</button>
+						                                   
+                        </div>
+                        
+                        </div>
+                
+                       
+                  </div>
+                        <div class="row"  ng-show="machineDrawingTable">
+                  
+                 <div class="col-sm-12 table-responsive "> 
+                     
+                <table class="table table-bordered table-striped">
+                   
+                  <thead class="table_thead">
+                  <tr>
+                  	 <th>Sr.No</th>
+                    <th>Machine Name</th>
+                    <th>Drawing Name</th>
+                    <th>Mapped Date</th>
+                    <th>Mapped By</th>
+                    
+                      <th>Action</th>
+                  </tr>
+                  </thead>
+                    
+                  <tbody>
+                  <tr ng-show="vm.machineDrawings.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+				   <tr dir-paginate="machineDrawing in vm.machineDrawings| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+						   <td class="text-center">{{$index+1}}</td>
+						   <td>{{machineDrawing.machine.machineName}}</td>
+		                   <td>{{machineDrawing.drawing.name}}</td>
+		                  
+		                   <td>{{machineDrawing.addedDate|date:'dd-MM-yyyy'}}</td>
+		                   <td>{{machineDrawing.addedBy}}</td>
+						   <td>
+							 <!-- <i class="fa fa-trash tableicon" data-toggle="tooltip" data-placement="bottom" title="Delete" ng-click="deletMachine(machine)"></i>
+				             <i class="fas fa-edit tableicon" data-toggle="tooltip" data-placement="bottom" title="Edit"  ng-click="editmachine(machine)"></i>
+				             <i  class="fas fa-sync"  data-toggle="tooltip" data-placement="bottom" title="Status Change" ng-click="changeStatus(machine)"></i>
+				 -->
+			               </td>	
+				</tr>			
+                   
+                    </tbody>  
+                </table>
+                   <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+                     
+                      </div>
+                  </div>
+                  <div class="row"  ng-show="machineSpindleTable">
+                  
+                 <div class="col-sm-12 table-responsive "> 
+                     
+                <table class="table table-bordered table-striped">
+                   
+                  <thead class="table_thead">
+                  <tr>
+                  	 <th>Sr.No</th>
+                    <th>Machine Name</th>
+                    <th>Spindle Name</th>
+                    <th>Mapped Date</th>
+                    <th>Mapped By</th>
+                    
+                      <th>Action</th>
+                  </tr>
+                  </thead>
+                    
+                  <tbody>
+                  <tr ng-show="vm.machineSpindles.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+				   <tr dir-paginate="machineSpindle in vm.machineSpindles| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+						   <td class="text-center">{{$index+1}}</td>
+						   <td>{{machineSpindle.machine.machineName}}</td>
+		                   <td>{{machineSpindle.spindle.spindleName}}</td>
+		                  
+		                   <td>{{machineSpindle.addedDate|date:'dd-MM-yyyy'}}</td>
+		                   <td>{{machineSpindle.addedBy}}</td>
+						   <td>
+							 <!-- <i class="fa fa-trash tableicon" data-toggle="tooltip" data-placement="bottom" title="Delete" ng-click="deletMachine(machine)"></i>
+				             <i class="fas fa-edit tableicon" data-toggle="tooltip" data-placement="bottom" title="Edit"  ng-click="editmachine(machine)"></i>
+				             <i  class="fas fa-sync"  data-toggle="tooltip" data-placement="bottom" title="Status Change" ng-click="changeStatus(machine)"></i>
+				 -->
+			               </td>	
+				</tr>			
+                   
+                    </tbody>  
+                </table>
+                   <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+                     
+                      </div>
+                  </div>
+               
+                    <div class="row"  ng-show="machineLocationTable">
+                  
+                 <div class="col-sm-12 table-responsive "> 
+                     
+                <table class="table table-bordered table-striped">
+                   
+                  <thead class="table_thead">
+                  <tr>
+                  	 <th>Sr.No</th>
+                    <th>Machine Name</th>
+                    <th>Location Name</th>
+                    <th>Mapped Date</th>
+                    <th>Mapped By</th>
+                    
+                      <th>Action</th>
+                  </tr>
+                  </thead>
+                    
+                  <tbody>
+                  <tr ng-show="vm.machineLocations.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+				   <tr dir-paginate="machineSpindle in vm.machineLocations| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+						   <td class="text-center">{{$index+1}}</td>
+						   <td>{{machineSpindle.machine.machineName}}</td>
+		                   <td>{{machineSpindle.location.locationName}}</td>
+		                  
+		                   <td>{{machineSpindle.addedDate|date:'dd-MM-yyyy'}}</td>
+		                   <td>{{machineSpindle.addedBy}}</td>
+						   <td>
+							 <!-- <i class="fa fa-trash tableicon" data-toggle="tooltip" data-placement="bottom" title="Delete" ng-click="deletMachine(machine)"></i>
+				             <i class="fas fa-edit tableicon" data-toggle="tooltip" data-placement="bottom" title="Edit"  ng-click="editmachine(machine)"></i>
+				             <i  class="fas fa-sync"  data-toggle="tooltip" data-placement="bottom" title="Status Change" ng-click="changeStatus(machine)"></i>
+				 -->
+			               </td>	
+				</tr>			
+                   
+                    </tbody>  
+                </table>
+                   <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+                     
+                      </div>
+                  </div>
+              <div class="row"  ng-show="machineSpareTable">
+                  
+                 <div class="col-sm-12 table-responsive "> 
+                     
+                <table class="table table-bordered table-striped">
+                   
+                  <thead class="table_thead">
+                  <tr>
+                  	 <th>Sr.No</th>
+                    <th>Machine Name</th>
+                    <th>Spare Name</th>
+                    <th>Mapped Date</th>
+                    <th>Mapped By</th>
+                    
+                      <th>Action</th>
+                  </tr>
+                  </thead>
+                    
+                  <tbody>
+                  <tr ng-show="vm.machineSpares.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+				   <tr dir-paginate="machineSpindle in vm.machineSpares| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+						   <td class="text-center">{{$index+1}}</td>
+						   <td>{{machineSpindle.machine.machineName}}</td>
+		                   <td>{{machineSpindle.spare.spareName}}</td>
+		                  
+		                   <td>{{machineSpindle.addedDate|date:'dd-MM-yyyy'}}</td>
+		                   <td>{{machineSpindle.addedBy}}</td>
+						   <td>
+							 <!-- <i class="fa fa-trash tableicon" data-toggle="tooltip" data-placement="bottom" title="Delete" ng-click="deletMachine(machine)"></i>
+				             <i class="fas fa-edit tableicon" data-toggle="tooltip" data-placement="bottom" title="Edit"  ng-click="editmachine(machine)"></i>
+				             <i  class="fas fa-sync"  data-toggle="tooltip" data-placement="bottom" title="Status Change" ng-click="changeStatus(machine)"></i>
+				 -->
+			               </td>	
+				</tr>			
+                   
+                    </tbody>  
+                </table>
+                   <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"  ></dir-pagination-controls>
+                     
+                      </div>
+                  </div> 
+              </div>
+              <!-- /card-body -->
+            </div>
+                </div>
+                </div>   <!-- tabel end  -->
+            
+            </div>     
+    
+            
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>

@@ -1,0 +1,221 @@
+<!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Main row -->
+        <div >
+                <!-- topnuttons start -->
+          <div class="row bar-topname">
+            <div class="col-12">
+                                <div class="page-title-box button-style">
+                                    <h4 class="page-title float-left">Spindle </h4>
+
+                                     <ul class="breadcrumb float-right">
+                                  		<li class="breadcrumb-item active">
+                                            <button type="button"  data-toggle="tooltip" data-placement="bottom"  class="btn btn-sucess" style="background-color: deepskyblue; color: white" id="addnew" title="Add New Spares form" ng-click="add()">Add New </button>
+                                         </li>
+                                 	
+                                  		
+                                 	
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+        
+               </div> <!-- topbuttons end -->
+                
+                <!-- spindel form start -->
+            <div class="row" >
+                <div class="col-lg-12" ng-show="addTab" >
+                    <div class="card card-outline-info" >
+                            <div class="card-header">
+                                <h4 class="mb-0 text-white">Spindle Registration</h4>
+                            </div>
+                            <div class="card-body">
+                                <form  >
+                                    <div class="form-body">
+                                        <h3 class="card-title">Spindle Info</h3>
+                                        <hr>
+                                        <div class="row pt-3">
+                                            <div class="col-md-6">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Spindle Name</label>
+                                                    
+                                                    <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="Spindle_Name" ng-model="spindle.spindleName" placeholder="Enter Spindle Name  "  aria-invalid="false" style="">
+                                                    <span ng-show="SpindleNameError" style="color: red;" aria-hidden="false" class="ng-hide">  * Spindle Name is mandatory</span>
+                                                </div>
+                                            </div>
+                                           
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Spindle Type</label>
+                                                      
+                                                    <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="Spindle_Type" ng-model="spindle.spindleType"  placeholder="Enter Spindle Type"  aria-invalid="false" style="">
+                                                    <span ng-show="SpindleTypeError" style="color: red;" aria-hidden="false" class="ng-hide">  * Spindle Type  is mandatory</span>
+                                                </div>
+                                            </div>
+                                          
+                                        </div>
+                                        
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Spindle Details </label>
+                                                      <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="Belt_Details" ng-model="spindle.spindleDetails" placeholder="Enter Spindle Details"  aria-invalid="false" style="">
+                                                        <span ng-show="spindleDetailsErr" style="color: red;" aria-hidden="false" class="ng-hide">  * Spindle Details is mandatory</span>
+                                                </div>
+                                            </div>
+                                           
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Spares Info </label>
+                                                    <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="Spares_Info" ng-model="spindle.sparesInfo" placeholder="Enter Spares Info "  aria-invalid="false" style="">
+                                                    <span ng-show="SparesInfoError" style="color: red;" aria-hidden="false" class="ng-hide">  * Spares Info  is mandatory </span>
+                                                </div>
+                                            </div> 
+                                            
+                                            
+                                           
+                                        </div>
+                                       
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-success" ng-click="save(spindle)"> <i class="fa fa-check"  ></i> Save</button>
+                                        <button type="button" class="btn btn-success btn-cancel" ng-click="cancel()">Cancel</button>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                        </div>
+                
+                </div>
+                
+            
+            </div>   <!-- spindle form end -->
+            
+                
+                
+            <!--tabel code vew-->
+            <div class="row">
+            <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+               
+                  <h4 class="mb-0 text-white">Spindle Data Table</h4>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                   <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                        <div class="dt-buttons btn-group flex-wrap" style="padding-bottom: 22px">               
+                            <button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light button-style" id="tooltip-touch" title="Export Excel" ng-click="newExcel()" style="margin-top: 0.5%;margin-left: 1%;"><i class="fa fa-file-excel-o" style="font-size:18px;margin:0 2px;"></i>Download Excel</button>
+						    <button id="btnExport" ng-json-export-excel data="vm.allSpindle" report-fields="vm.labels" style="display:none" filename="'Spindles'" ></button>
+                        </div>
+                        
+                        </div>
+                    
+                  
+                  <div class="col-sm-12 col-md-4">
+                      <div id="example1_filter" class="dataTables_filter">
+                           <label for="search">items per page:</label>
+					              <input type="number" min="1" max="100" class="form-control" ng-model="vm.perPage" >
+                      </div>
+                  </div>
+                  
+                  <div class="col-sm-12 col-md-4">
+                      <div id="example1_filter" class="dataTables_filter">
+                          <label class="label_serach">Search: </label>
+                              <input type="search" class="form-control form-control-sm "  ng-model="search" placeholder="" aria-controls="example1" ng-change="searchByPagination(search)">
+                      </div>
+                  </div>
+                       
+                  </div>
+                  
+                  
+                  <div class="row">
+                  
+                 <div class="col-sm-12 table-responsive"> 
+                     
+                <table  class="table table-bordered table-striped">
+                   
+                  <thead class="table_thead">
+                  <tr>
+                  	<th>Sr.No</th>
+                    <th>Spindle Name</th>
+                    <th>Spindle Types</th>
+                    <th>Belt Details</th>
+                    <th>Spares Info</th>
+                     <th>Status</th>
+                      <th>Action</th>
+                  </tr>
+                  </thead>
+                    
+                  <tbody>    
+                  <tr ng-show="vm.spindles.length <= 0"><td colspan="8" style="text-align:center;">Data Not Found!!
+				   <tr dir-paginate="spindle in vm.spindles| filter:q |itemsPerPage:vm.perPage" total-items="vm.total_count" current-page="pagination.current">
+				   <td class="text-center">{{(vm.perPage*(vm.pageno-1))+($index+1)}}</td>	
+                   <td>{{spindle.spindleName}}</td>
+                   <td>{{spindle.spindleType}}</td>
+                   <td>{{spindle.spindleDetails}}</td>
+                   <td>{{spindle.sparesInfo}}</td>
+                 <td>
+                  <button style="width:100px" ng-class="spindle.active==1 ? 'btn btn-rounded btn-success':'btn btn-rounded btn-danger'">
+                                            		   <span ng-if="spindle.active==1"> Active</span><span ng-if="spindle.active==0"> InActive</span>
+                     </button>
+                 	</td>
+                  
+                  <td><i class="fa fa-trash tableicon" data-toggle="tooltip" data-placement="bottom" title="Delete" ng-click="deleteSpindle(spindle)"></i>
+                      <i class="fas fa-edit tableicon" data-toggle="tooltip" data-placement="bottom" title="Edit"  ng-click="editSpindle(spindle)"></i>
+                      <i  class="fas fa-sync"  data-toggle="tooltip" data-placement="bottom" title="Status Change" ng-click="changeStatus(spindle)"></i>
+
+
+                  </td>
+                  </tr>    
+                 
+                    </tbody>  
+                </table>
+                     
+                      </div>
+                  </div>
+                  
+                  <div class="row">
+                      
+                    <div class="col-sm-12 col-md-5">
+                              <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 entries
+                              
+                              </div>
+                      </div>
+                      
+                      <div class="col-sm-12 col-md-7">
+                          <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                              <ul class="pagination">
+                                  <li class="paginate_button page-item previous disabled" >
+                                      <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                                  </li>
+                                  <li class="paginate_button page-item active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                  <li class="paginate_button page-item "><a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                 <li class="paginate_button page-item next" ><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                              </ul>
+                          </div>
+                      
+                      
+                      </div>
+                    
+                  
+                  </div>
+                  
+              </div>
+              
+            </div>
+                </div>
+                </div> <!--tabel code vew-->
+      
+            </div>
+         
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->

@@ -1,0 +1,239 @@
+  <section class="content">
+      <div class="container-fluid">
+       
+        <div >
+                
+                <!-- topbuttons start -->
+          <div class="row bar-topname">
+            <div class="col-12">
+                                <div class="page-title-box button-style">
+                                    <h4 class="page-title float-left"> </h4>
+
+                                                                     
+                                    
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+        
+               </div> <!--topbuttons end -->
+                
+            
+                <!-- spares form start -->
+                
+            <div class="row" >
+                <div class="col-lg-12" >
+                    <div class="card card-outline-info" >
+                            <div class="card-header">
+                                <h4 class="mb-0 text-white">Upload</h4>
+                            </div>
+                            <div class="card-body">
+                                <form  >
+                                    <div class="form-body">
+                                        <h3 class="card-title">New Upload</h3>
+                                        <hr>
+                                        <div class="row">
+                                        <div class="col-md-4">
+                                        </div>
+                                             <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Select Upload</label>
+                                                    <select class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" ng-model="uploadType" id="spareType" ng-change="uploadTypeFn(uploadType)" aria-invalid="true">
+                                                    <option value="" disabled class selected="selected">Select Upload</option>
+                                                    <option value="Machine">Machine</option>
+                                                    <option value="Spare">Spare</option>
+                                                     <option value="Spindle">Spindle</option>
+                                                    <option value="Location">Location</option>
+                                                    <option value="TBM Maintemance">TBM Maintenance</option>
+                                                      <option value="MM Maintemance">MM Maintenance</option>
+                                                      <option value="Drawing">Drawing</option>
+                                                      <option value="MMTR">MMTR</option>
+                                                      <option value="MTBF">MTBF</option>
+                                                      <option value="Downtime">Downtime</option>
+                                                      <option value="Breakdown">Breakdown</option>
+                                                       <option value="SetupChart">SetupChart</option>
+                                                    </select>
+                                                                                                         <span ng-show="spareTypeErr" style="color: red;" aria-hidden="false" class="ng-hide">  *  Spare Type  is mandatory </span>
+                                                    
+                                                </div>
+                                            </div>
+                                           
+                                             
+                                          
+                                        </div>
+                                        <div class="row">
+                                         <div class="col-md-4"></div>
+                                         <div class="col-md-3" ng-show="uploadType=='Drawing'">
+                                               <div class="">
+							                                             	 <label for="inputCity" class="col-form-label">Drawing Name</label> 							                                             	 	
+                                                     <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="drwaingName" ng-model="drawingName"  placeholder="Enter Drawing Name "  aria-invalid="false" style="">
+
+							                                              	 <span ng-show="drawingNameErr" style="color:red">  * Drawing Name is mandatory</span>
+						                                             	</div>
+                                            </div>
+                      			 <div class="col-md-3" ng-show="uploadType=='SetupChart'">
+                                               <div class="">
+							                                             	 <label for="inputCity" class="col-form-label">Setup Chart Name</label> 							                                             	 	
+                                                     <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="SetupChartName" ng-model="SetupChartName"  placeholder="Setup Chart Name "  aria-invalid="false" style="">
+
+							                                              	 <span ng-show="SetupChartNameErr" style="color:red">  * Setup Chart Name is mandatory</span>
+						                                             	</div>
+                                            </div>
+                                        
+                                        
+                                        
+                                        </div>
+                                        
+                                        <div class="row">
+                                        <div class="col-md-4">
+                                        </div>
+                                            <div class="col-md-3" ng-show="uploadType=='Machine'">
+                                               <div class="">
+							                                             	 <label for="inputCity" class="col-form-label">Upload (.xmlx)</label> 							                                             	 	
+							                                              	 <input id="uploadMachine"  class="form-control mandtry"  type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />  
+
+							                                              	 <span ng-show="deskNoErr" style="color:red">  * Desk No is mandatory</span>
+						                                             	<a href="assets/uploadExcel/Desk.xlsx" type="button"class="btn btn-primary btn-rounded button-style waves-effect waves-light btn-sm"  id="tooltip-touch" title="Upload"  style="margin:10px; display: inline-block;">Download format</a>
+						                                             	</div>
+                                            </div>
+                                             <div class="col-md-3" ng-show="uploadType=='Spindle'">
+                                               <div class="">
+							                                             	 <label for="inputCity" class="col-form-label">Upload (.xmlx)</label> 							                                             	 	
+							                                              	 <input id="uploadSpindle"  class="form-control mandtry"  type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />  
+
+							                                              	 <span ng-show="deskNoErr" style="color:red">  * Desk No is mandatory</span>
+						                                             	<a href="assets/uploadExcel/Desk.xlsx" type="button"class="btn btn-primary btn-rounded button-style waves-effect waves-light btn-sm"  id="tooltip-touch" title="Upload"  style="margin:10px; display: inline-block;">Download format</a>
+						                                             	</div>
+                                            </div>
+                                           
+                                            <div class="col-md-3" ng-show="uploadType=='Spare'">
+                                               <div class="">
+							                                             	 <label for="inputCity" class="col-form-label">Upload (.xmlx)</label> 							                                             	 	
+							                                              	 <input id="uploadSpare"  class="form-control mandtry"  type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />  
+
+							                                              	 <span ng-show="deskNoErr" style="color:red">  * Desk No is mandatory</span>
+						                                             	<a href="assets/uploadExcel/Desk.xlsx" type="button"class="btn btn-primary btn-rounded button-style waves-effect waves-light btn-sm"  id="tooltip-touch" title="Upload"  style="margin:10px; display: inline-block;">Download format</a>
+						                                             	</div>
+                                            </div>
+                                            <div class="col-md-3" ng-show="uploadType=='Location'">
+                                               <div class="">
+							                                             	 <label for="inputCity" class="col-form-label">Upload (.xmlx)</label> 							                                             	 	
+							                                              	 <input id="uploadLocation"  class="form-control mandtry"  type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />  
+
+							                                              	 <span ng-show="deskNoErr" style="color:red">  * Desk No is mandatory</span>
+						                                             	<a href="assets/uploadExcel/Desk.xlsx" type="button"class="btn btn-primary btn-rounded button-style waves-effect waves-light btn-sm"  id="tooltip-touch" title="Upload"  style="margin:10px; display: inline-block;">Download format</a>
+						                                             	</div>
+                                            </div>
+                                              <div class="col-md-3" ng-show="uploadType=='MM Maintemance'">
+                                               <div class="">
+							                                             	 <label for="inputCity" class="col-form-label">Upload (.xmlx)</label> 							                                             	 	
+							                                              	 <input id="uploadMMMaintemance"  class="form-control mandtry"  type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />  
+
+							                                              	 <span ng-show="deskNoErr" style="color:red">  * Desk No is mandatory</span>
+						                                             	<a href="assets/uploadExcel/Desk.xlsx" type="button"class="btn btn-primary btn-rounded button-style waves-effect waves-light btn-sm"  id="tooltip-touch" title="Upload"  style="margin:10px; display: inline-block;">Download format</a>
+						                                             	</div>
+                                            </div>
+                                            <div class="col-md-3" ng-show="uploadType=='TBM Maintemance'">
+                                               <div class="">
+							                                             	 <label for="inputCity" class="col-form-label">Upload (.xmlx)</label> 							                                             	 	
+							                                              	 <input id="uploadTBMMaintemance"  class="form-control mandtry"  type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />  
+
+							                                              	 <span ng-show="deskNoErr" style="color:red">  * Desk No is mandatory</span>
+						                                             	<a href="assets/uploadExcel/Desk.xlsx" type="button"class="btn btn-primary btn-rounded button-style waves-effect waves-light btn-sm"  id="tooltip-touch" title="Upload"  style="margin:10px; display: inline-block;">Download format</a>
+						                                             	</div>
+                                            </div>
+                                            <div class="col-md-3" ng-show="uploadType=='Drawing'">
+                                               <div class="">
+							                                             	 <label for="inputCity" class="col-form-label">Upload (.xmlx)</label> 							                                             	 	
+							                                              	 <input id="uploadDrawing"  class="form-control mandtry"  type="file" />  
+
+							                                              	 <span ng-show="deskNoErr" style="color:red">  * Desk No is mandatory</span>
+						                                             	</div>
+                                            </div>
+                                                                   <div class="col-md-3" ng-show="uploadType=='MMTR'">
+                                               <div class="">
+							                                             	 <label for="inputCity" class="col-form-label">Upload (.xmlx)</label> 							                                             	 	
+							                                              	 <input id="uploadMMTR"  class="form-control mandtry"  type="file" />  
+
+						                                             	</div>
+                                            </div>
+                                             <div class="col-md-3" ng-show="uploadType=='MTBF'">
+                                               <div class="">
+							                                             	 <label for="inputCity" class="col-form-label">Upload (.xmlx)</label> 							                                             	 	
+							                                              	 <input id="uploadMTBF"  class="form-control mandtry"  type="file" />  
+
+						                                             	</div>
+                                            </div>
+                                             <div class="col-md-3" ng-show="uploadType=='Downtime'">
+                                               <div class="">
+							                                             	 <label for="inputCity" class="col-form-label">Upload (.xmlx)</label> 							                                             	 	
+							                                              	 <input id="uploadDowntime"  class="form-control mandtry"  type="file" />  
+
+							                                              	 <span ng-show="deskNoErr" style="color:red">  * Desk No is mandatory</span>
+						                                             	</div>
+                                            </div>
+                                             <div class="col-md-3" ng-show="uploadType=='Breakdown'">
+                                               <div class="">
+							                                             	 <label for="inputCity" class="col-form-label">Upload (.xmlx)</label> 							                                             	 	
+							                                              	 <input id="uploadBreakdown"  class="form-control mandtry"  type="file" />  
+
+							                                              	 <span ng-show="deskNoErr" style="color:red">  * Desk No is mandatory</span>
+						                                             	</div>
+                                            </div>
+                            <!--                       
+                                             <div class="col-md-3" ng-show="uploadType=='SetupChart'">
+                                         <div class="">
+							                                             	 <label for="inputCity" class="col-form-label">Upload (.xmlx)</label> 							                                             	 	
+							                                              	 <input id="uploadSetupChart"  class="form-control mandtry"  type="file" />  
+
+							                                              	 <span ng-show="deskNoErr" style="color:red">  * Desk No is mandatory</span>
+						                                             	</div> 
+						                                             	
+						                                             	<div class="">
+							                                             	 <label for="inputCity" class="col-form-label">Drawing Name</label> 							                                             	 	
+                                                     <input type="text" class="form-control  ng-pristine ng-valid ng-empty ng-touched" id="drwaingName" ng-model="drawingName"  placeholder="Enter Drawing Name "  aria-invalid="false" style="">
+
+							                                              	 <span ng-show="drawingNameErr" style="color:red">  * Drawing Name is mandatory</span>
+						                                             	</div>
+                                            </div>
+                                            -->
+                                                                             <div class="col-md-3" ng-show="uploadType=='SetupChart'">
+                                               <div class="">
+							                                             	 <label for="inputCity" class="col-form-label">Upload (.xmlx)</label> 							                                             	 	
+							                                              	 <input id="uploadSetUpChart"  class="form-control mandtry"  type="file" />  
+
+							                                              	 <span ng-show="deskNoErr" style="color:red">  * Desk No is mandatory</span>
+						                                             	</div>
+                                            </div>
+                                        </div>
+                                       
+                                      
+                                       
+                                    </div>
+                                    
+                                    
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-success" ng-click="vm.uploadMachine()"> <i class="fa fa-check"  ></i> Upload</button>
+                                        <button type="button" class="btn btn-success btn-cancel" ng-click="cancel()">Cancel</button>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                        </div>
+                
+                </div>
+                
+            
+            </div>  <!-- spares form end  -->
+                
+          
+          
+            <!--tabel code vew-->
+             
+                
+       
+            </div>   
+
+            
+      
+      </div><!-- /.container-fluid -->
+    </section>
